@@ -1,6 +1,12 @@
 name: Android 自动化打包正式 AAB 🤖
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # 手动触发
+  workflow_dispatch:
 
 jobs:
   build:

@@ -15,7 +15,7 @@ public class PlayerInfo
     public int gameSceneItem_Exchange = 5;
     public int gameSceneItem_Return = 5;
 
-    public int head = 0;
+    public int head = 1;
     public List<int> heads;
 
 

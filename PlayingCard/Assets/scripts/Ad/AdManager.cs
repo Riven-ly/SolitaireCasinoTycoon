@@ -11,8 +11,8 @@ public class AdManager : MonoBehaviour
     //-----------------------------------------------------------
     public ApplovinMaxRewardOperator applovinMaxRewardOperator;
     public ApplovinMaxInterstitialOperator applovinMaxInterstitialOperator;
-    private string SDK_key = "PbbJng_h8aD16wZWrSaHN5gtVDExorX-b1ywfx8Gal1WlU7kvbWVDpzsPARTTLwex_cbeU8SGZanUXSoA1WDMx";//测试
-    //private string SDK_key = "4xI8Wexro+t5Cg53ZFj2t6ML1GMEiPi99oBHbP4pfnxdjOou+X/9faU05XjKHFRTL+/wq9t4rKX99il4AwD0REdQSNVF9rAgymZUi6GipA353uCPvO1ejwgWXKDF+rSOoSOnA07lTT8=";
+    //private string SDK_key = "PbbJng_h8aD16wZWrSaHN5gtVDExorX-b1ywfx8Gal1WlU7kvbWVDpzsPARTTLwex_cbeU8SGZanUXSoA1WDMx";//测试
+    private string SDK_key = "4xI8Wexro+t5Cg53ZFj2t6ML1GMEiPi99oBHbP4pfnxdjOou+X/9faU05XjKHFRTL+/wq9t4rKX99il4AwD0REdQSNVF9rAgymZUi6GipA353uCPvO1ejwgWXKDF+rSOoSOnA07lTT8=";
 
     private void Awake()
     {
@@ -29,12 +29,10 @@ public class AdManager : MonoBehaviour
             applovinMaxInterstitialOperator.Init();
         };
 
-        //string decryptedSdkKey = EncryptSDKKey.DecryptWithRandomSalt(SDK_key);
-        //Debug.Log("解密结果（还原原值）：" + decryptedSdkKey);
-        //MaxSdk.SetSdkKey(decryptedSdkKey);
-        //MaxSdk.SetUserId(GameApiConfig.ClientUUID);
-
-        MaxSdk.SetSdkKey(SDK_key);
+        string decryptedSdkKey = EncryptSDKKey.DecryptWithRandomSalt(SDK_key);
+        Debug.Log("解密结果（还原原值）：" + decryptedSdkKey);
+        MaxSdk.SetSdkKey(decryptedSdkKey);
+        MaxSdk.SetUserId(GameApiConfig.ClientUUID);
         MaxSdk.InitializeSdk();
     }
 

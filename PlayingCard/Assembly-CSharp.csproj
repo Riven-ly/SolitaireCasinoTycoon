@@ -113,13 +113,11 @@
     <Compile Include="Assets\scripts\language\MultilingualSprite.cs" />
     <Compile Include="Assets\scripts\NetworkChecker\NetworkCheckerPanel.cs" />
     <Compile Include="Assets\scripts\GameScene\sceneitem\GameSceneItem_Return.cs" />
-    <Compile Include="Assets\StompyRobot\SROptions\SROptions.cs" />
     <Compile Include="Assets\scripts\GameScene\sceneitem\GameSceneItem_Extract.cs" />
     <Compile Include="Assets\scripts\TxElement\TypeSelectPanel\TxElementTypeSelectPanel.cs" />
     <Compile Include="Assets\scripts\Panel\ArchitecturePanel.cs" />
     <Compile Include="Assets\scripts\PlayingCard\PlayingCardControl.cs" />
     <Compile Include="Assets\scripts\PlayingCard\ResiduePlayingCards.cs" />
-    <Compile Include="Assets\StompyRobot\SROptions\SROptions.Test.cs" />
     <Compile Include="Assets\scripts\GameScene\sceneitem\GameSceneItemBase.cs" />
     <Compile Include="Assets\scripts\gamebox\GameBox.cs" />
     <Compile Include="Assets\scripts\Effect\GoldFlyControl.cs" />
@@ -131,7 +129,6 @@
     <Compile Include="Assets\scripts\EncryptSDKKey.cs" />
     <Compile Include="Assets\scripts\language\MultilingualText.cs" />
     <Compile Include="Assets\scripts\Architecture\ArchitectureCell.cs" />
-    <Compile Include="Assets\StompyRobot\SROptions\SROptions.Attributes.cs" />
     <Compile Include="Assets\scripts\Panel\GeneralTipsPanel.cs" />
     <Compile Include="Assets\scripts\NetworkChecker\NetworkChecker.cs" />
     <Compile Include="Assets\scripts\Panel\TakeReward_WheelPanel.cs" />
@@ -159,7 +156,6 @@
     <None Include="Assets\Adjust\Native\Android\AdjustAndroidManifest.xml" />
     <None Include="Assets\scripts\Effect\UIScanLight.shader" />
     <None Include="Assets\MaxSdk\Mediation\MediationAdapters.txt" />
-    <None Include="Assets\StompyRobot\SROptions\link.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1204,14 +1200,6 @@
       <Project>{172C9149-C59D-00D7-C3D8-6AA22D424DD6}</Project>
       <Name>AdjustSdk.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRDebugger.csproj">
-      <Project>{4791E84E-3958-03FF-A1D9-CE2FBA7FF042}</Project>
-      <Name>StompyRobot.SRDebugger</Name>
-    </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRDebugger.Editor.csproj">
-      <Project>{B29E2AEB-1604-E37E-C13D-873300534D1B}</Project>
-      <Name>StompyRobot.SRDebugger.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="SolarEngineSDK.Editor.csproj">
       <Project>{3A56E791-22C6-0B27-80A9-37F05B0C7EBD}</Project>
       <Name>SolarEngineSDK.Editor</Name>
@@ -1228,17 +1216,9 @@
       <Project>{2C86D26C-AD90-4793-D59D-1E2C824F0326}</Project>
       <Name>MaxSdk.Scripts</Name>
     </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRF.csproj">
-      <Project>{E0554496-2AC6-84DA-234C-A4D12FA49F8E}</Project>
-      <Name>StompyRobot.SRF</Name>
-    </ProjectReference>
     <ProjectReference Include="AdjustSdk.Scripts.csproj">
       <Project>{DD325885-A52A-CE39-4C42-B08AB70C2F4D}</Project>
       <Name>AdjustSdk.Scripts</Name>
-    </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRF.Editor.csproj">
-      <Project>{C53F767F-E7F5-1071-9296-AB41F91D3198}</Project>
-      <Name>StompyRobot.SRF.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

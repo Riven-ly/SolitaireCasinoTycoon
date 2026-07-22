@@ -117,7 +117,6 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
             }
         }
 
-        //cnt = 0; //todo
         return cnt;
     }
 

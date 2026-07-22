@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class ApplovinMaxInterstitialOperator : MonoBehaviour
 {
-    private string _androidInterstitialAdUnitId = "075d7d1b3dcbd8e1"; // ∞≤◊ø≤‚ ‘ID
+    private string _androidInterstitialAdUnitId = "9c9dce817740a47c";
+    //private string _androidInterstitialAdUnitId = "075d7d1b3dcbd8e1"; // ∞≤◊ø≤‚ ‘ID
     private string _iosInterstitialAdUnitId = "";     // iOS≤‚ ‘ID
     int retryAttempt;
     //-------------------------------

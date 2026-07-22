@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class ApplovinMaxRewardOperator : MonoBehaviour
 {
-    protected string _androidRewardedAdUnitId = "7853d0583015ae97"; // 安卓测试ID
+    protected string _androidRewardedAdUnitId = "427e6fb29a8bc97e";
+    //protected string _androidRewardedAdUnitId = "7853d0583015ae97"; // 安卓测试ID
     protected string _iosRewardedAdUnitId = "";     // iOS测试ID
     int retryAttempt;
     //-------------------------------

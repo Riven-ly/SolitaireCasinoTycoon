@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45f0f30c2e564ab3a551dabb71321b6, type: 3}
   m_Name: SERuntimeSettings
   m_EditorClassIdentifier: 
-  isCN: 1
-  isOversea: 0
+  isCN: 0
+  isOversea: 1
   isUseODMInfo: 0

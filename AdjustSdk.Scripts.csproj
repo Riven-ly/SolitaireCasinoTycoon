@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DD325885-A52A-CE39-4C42-B08AB70C2F4D}</ProjectGuid>
+    <ProjectGuid>{86CBC20F-6C45-438A-CEAA-968554F3C5A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>AdjustSdk.Scripts</AssemblyName>

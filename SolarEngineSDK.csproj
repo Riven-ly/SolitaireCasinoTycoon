@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C3028D38-9DC3-4208-AB6D-4D2CEB49AAC7}</ProjectGuid>
+    <ProjectGuid>{85346130-485E-1EE1-9EC4-32BF8903A6A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>SolarEngineSDK</AssemblyName>

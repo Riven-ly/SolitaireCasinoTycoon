@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3A56E791-22C6-0B27-80A9-37F05B0C7EBD}</ProjectGuid>
+    <ProjectGuid>{6B3BA170-0ABF-B1D7-ED5E-8A299ACBD517}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>SolarEngineSDK.Editor</AssemblyName>
@@ -1068,7 +1068,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SolarEngineSDK.csproj">
-      <Project>{C3028D38-9DC3-4208-AB6D-4D2CEB49AAC7}</Project>
+      <Project>{85346130-485E-1EE1-9EC4-32BF8903A6A4}</Project>
       <Name>SolarEngineSDK</Name>
     </ProjectReference>
   </ItemGroup>

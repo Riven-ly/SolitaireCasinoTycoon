@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{172C9149-C59D-00D7-C3D8-6AA22D424DD6}</ProjectGuid>
+    <ProjectGuid>{774E9817-26CD-1775-C61E-CBBEC03314F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>AdjustSdk.Editor</AssemblyName>
@@ -1061,7 +1061,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AdjustSdk.Scripts.csproj">
-      <Project>{DD325885-A52A-CE39-4C42-B08AB70C2F4D}</Project>
+      <Project>{86CBC20F-6C45-438A-CEAA-968554F3C5A7}</Project>
       <Name>AdjustSdk.Scripts</Name>
     </ProjectReference>
   </ItemGroup>

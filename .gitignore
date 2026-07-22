@@ -3,9 +3,7 @@ Library/
 # Unity临时文件
 Temp/
 Obj/
-# 打包产物（不用提交）
-Build/
-Builds/
+
 # 个人编辑器设置（不同开发者不一样）
 UserSettings/
 # 日志文件

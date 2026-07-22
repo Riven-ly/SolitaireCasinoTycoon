@@ -64,7 +64,6 @@
     <Compile Include="Assets\Editor\CustomToolEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\SolarEngineNet\SolarEnginePlugins\ODMInfo\Editor\Dependencies.xml" />
     <None Include="Assets\SolarEngineNet\iOS\Editor\Dependencies.xml" />
     <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
     <None Include="Assets\MaxSdk\Mediation\Mintegral\Editor\Dependencies.xml" />
@@ -73,8 +72,8 @@
     <None Include="Assets\MaxSdk\AppLovin\Editor\Dependencies.xml" />
     <None Include="Assets\Adjust\Native\Editor\Dependencies.xml" />
     <None Include="Assets\MaxSdk\Mediation\Google\Editor\Dependencies.xml" />
-    <None Include="Assets\SolarEngineNet\SolarEnginePlugins\Oaid\Editor\Dependencies.xml" />
     <None Include="Assets\MaxSdk\Mediation\ByteDance\Editor\Dependencies.xml" />
+    <None Include="Assets\MaxSdk\Mediation\BidMachine\Editor\Dependencies.xml" />
     <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.PackageManagerResolver.dll" />
     <None Include="Assets\MaxSdk\Mediation\IronSource\Editor\Dependencies.xml" />
     <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.VersionHandlerImpl.dll" />
@@ -454,6 +453,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
@@ -492,10 +495,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">

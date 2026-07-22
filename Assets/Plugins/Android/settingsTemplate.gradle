@@ -19,7 +19,10 @@ dependencyResolutionManagement {
 // Android Resolver Repos Start
         def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
         maven {
-            url "https://artifact.bytedance.com/repository/pangle" // Assets/MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml:8
+            url "https://artifactory.bidmachine.io/bidmachine" // Assets/MaxSdk/Mediation/BidMachine/Editor/Dependencies.xml:8
+        }
+        maven {
+            url "https://artifact.bytedance.com/repository/pangleglobal" // Assets/MaxSdk/Mediation/ByteDance/Editor/Dependencies.xml:8
         }
         maven {
             url "https://cboost.jfrog.io/artifactory/chartboost-ads/" // Assets/MaxSdk/Mediation/Chartboost/Editor/Dependencies.xml:8

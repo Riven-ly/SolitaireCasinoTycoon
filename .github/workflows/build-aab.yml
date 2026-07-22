@@ -41,7 +41,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-          # 🎯 修复 1：Game-CI v4 正确的 AAB 导出参数
+          unityVersion: 2022.3.62f3 
           androidExportType: 'androidAppBundle'
 
           # 🎯 修复 2：将路径指向项目 Assets 下的实际相对路径（请根据你的真实文件名修改）

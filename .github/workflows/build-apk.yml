@@ -41,7 +41,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-          # 🎯 核心修改：将导出类型改为 androidPackage 以生成 APK
+          unityVersion: 2022.3.62f3  
           androidExportType: 'androidPackage'
 
           # 🎯 将路径指向项目 Assets 下的实际相对路径

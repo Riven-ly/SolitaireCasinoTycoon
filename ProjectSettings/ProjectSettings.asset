@@ -269,7 +269,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: "D:/\u7B7E\u540D\u6587\u4EF6/mySignKey.keystore"
-  AndroidKeyaliasName: mysignkey
+  AndroidKeyaliasName: Debug
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

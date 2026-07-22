@@ -64,25 +64,24 @@
     <Compile Include="Assets\Editor\CustomToolEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.182\Google.PackageManagerResolver.dll" />
     <None Include="Assets\SolarEngineNet\SolarEnginePlugins\ODMInfo\Editor\Dependencies.xml" />
     <None Include="Assets\SolarEngineNet\iOS\Editor\Dependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.182\Google.VersionHandlerImpl.dll" />
     <None Include="Assets\MaxSdk\Mediation\Mintegral\Editor\Dependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.IOSResolver.dll" />
     <None Include="Assets\MaxSdk\Mediation\Chartboost\Editor\Dependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.182\Google.IOSResolver.dll" />
     <None Include="Assets\MaxSdk\AppLovin\Editor\Dependencies.xml" />
     <None Include="Assets\Adjust\Native\Editor\Dependencies.xml" />
     <None Include="Assets\MaxSdk\Mediation\Google\Editor\Dependencies.xml" />
     <None Include="Assets\SolarEngineNet\SolarEnginePlugins\Oaid\Editor\Dependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.182_manifest.txt" />
+    <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
     <None Include="Assets\MaxSdk\Mediation\ByteDance\Editor\Dependencies.xml" />
-    <None Include="Assets\MaxSdk\Mediation\BidMachine\Editor\Dependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.PackageManagerResolver.dll" />
     <None Include="Assets\MaxSdk\Mediation\IronSource\Editor\Dependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.VersionHandlerImpl.dll" />
     <None Include="Assets\MaxSdk\Mediation\UnityAds\Editor\Dependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.186_manifest.txt" />
     <None Include="Assets\SolarEngineNet\Android\Editor\Dependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.182\Google.JarResolver.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.186\Google.JarResolver.dll" />
     <None Include="Assets\MaxSdk\Mediation\BigoAds\Editor\Dependencies.xml" />
     <None Include="Assets\MaxSdk\Mediation\InMobi\Editor\Dependencies.xml" />
     <None Include="Assets\MaxSdk\Mediation\Vungle\Editor\Dependencies.xml" />
@@ -444,7 +443,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.PackageManagerResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.182\Google.PackageManagerResolver.dll</HintPath>
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.PackageManagerResolver.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="TextMateSharpPlastic">
@@ -468,7 +467,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.182\Google.VersionHandlerImpl.dll</HintPath>
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.VersionHandlerImpl.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
@@ -476,7 +475,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.IOSResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.182\Google.IOSResolver.dll</HintPath>
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.IOSResolver.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenEditor">
@@ -524,7 +523,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.JarResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.182\Google.JarResolver.dll</HintPath>
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.186\Google.JarResolver.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MiniGameRemoteConfig">

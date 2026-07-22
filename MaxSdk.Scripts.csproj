@@ -75,8 +75,6 @@
     <Compile Include="Assets\MaxSdk\Scripts\MaxSdkUnityEditor.cs" />
     <Compile Include="Assets\MaxSdk\Scripts\MaxUserServiceUnityEditor.cs" />
     <Compile Include="Assets\MaxSdk\Scripts\MaxEventSystemChecker.cs" />
-    <Compile Include="Assets\MaxSdk\Scripts\MaxUserSegment.cs" />
-    <Compile Include="Assets\MaxSdk\Scripts\MaxTargetingData.cs" />
     <Compile Include="Assets\MaxSdk\Scripts\MaxUserServiceiOS.cs" />
     <Compile Include="Assets\MaxSdk\Scripts\MaxSdkLogger.cs" />
     <Compile Include="Assets\MaxSdk\Scripts\MaxSdkBase.cs" />

@@ -1,8 +1,5 @@
 fileFormatVersion: 2
-guid: 527c65004f8c84edbb4c14b8a2a04c5d
-labels:
-- al_max
-- al_max_export_path-MaxSdk/Mediation/BidMachine/Editor
+guid: f3ef8743ecb5245c3b3a5469b1ebeb7b
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

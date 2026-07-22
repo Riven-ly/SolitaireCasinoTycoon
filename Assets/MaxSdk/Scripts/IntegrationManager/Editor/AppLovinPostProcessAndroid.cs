@@ -27,8 +27,6 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
         private const string PropertyAndroidX = "android.useAndroidX";
         private const string PropertyJetifier = "android.enableJetifier";
         private const string EnableProperty = "=true";
-        private const string PropertyDexingArtifactTransform = "android.enableDexingArtifactTransform";
-        private const string DisableProperty = "=false";
 
         private const string KeyMetaDataAppLovinVerboseLoggingOn = "applovin.sdk.verbose_logging";
         private const string KeyMetaDataGoogleApplicationId = "com.google.android.gms.ads.APPLICATION_ID";
@@ -82,18 +80,12 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
                 var lines = File.ReadAllLines(gradlePropertiesPath);
 
                 // Add all properties except AndroidX, Jetifier, and DexingArtifactTransform since they may already exist. We will re-add them below.
-                gradlePropertiesUpdated.AddRange(lines.Where(line => !line.Contains(PropertyAndroidX) && !line.Contains(PropertyJetifier) && !line.Contains(PropertyDexingArtifactTransform)));
+                gradlePropertiesUpdated.AddRange(lines.Where(line => !line.Contains(PropertyAndroidX) && !line.Contains(PropertyJetifier)));
             }
 
             // Enable AndroidX and Jetifier properties
             gradlePropertiesUpdated.Add(PropertyAndroidX + EnableProperty);
             gradlePropertiesUpdated.Add(PropertyJetifier + EnableProperty);
-
-            // `DexingArtifactTransform` has been removed in Gradle 8+ which is the default Gradle version for Unity 6.
-#if !UNITY_6000_0_OR_NEWER
-            // Disable dexing using artifact transform (it causes issues for ExoPlayer with Gradle plugin 3.5.0+)
-            gradlePropertiesUpdated.Add(PropertyDexingArtifactTransform + DisableProperty);
-#endif
 
             try
             {
@@ -282,7 +274,7 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
                 }
                 else
                 {
-                    MaxSdkLogger.E("Failed to set distribution URL");
+                    MaxSdkLogger.UserError("Failed to set distribution URL");
                 }
             }
 
@@ -292,7 +284,7 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
                 // Unity 2022.3+ requires Gradle Plugin version 7.1.2+.
                 if (MaxSdkUtils.CompareVersions(customGradleToolsVersion, "7.1.2") == MaxSdkUtils.VersionComparisonResult.Lesser)
                 {
-                    MaxSdkLogger.E("Failed to set gradle plugin version. Unity 2022.3+ requires gradle plugin version 7.1.2+");
+                    MaxSdkLogger.UserError("Failed to set gradle plugin version. Unity 2022.3+ requires gradle plugin version 7.1.2+");
                     return;
                 }
 
@@ -303,7 +295,7 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
                 }
                 else
                 {
-                    MaxSdkLogger.E("Failed to set gradle library version");
+                    MaxSdkLogger.UserError("Failed to set gradle library version");
                 }
 
                 var newGradleVersionLine = AppLovinProcessGradleBuildFile.GetFormattedBuildScriptLine(string.Format("id 'com.android.application' version '{0}' apply false", customGradleToolsVersion));
@@ -316,7 +308,7 @@ namespace AppLovinMax.Scripts.IntegrationManager.Editor
                 }
                 else
                 {
-                    MaxSdkLogger.E("Failed to set gradle plugin version");
+                    MaxSdkLogger.UserError("Failed to set gradle plugin version");
                 }
             }
         }

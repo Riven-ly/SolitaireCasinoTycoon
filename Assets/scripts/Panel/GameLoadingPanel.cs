@@ -87,8 +87,8 @@ public class GameLoadingPanel : UIBase
         }
 
         //2.各个SDK初始化
-        GameManager.appATTtype = 1;//todp
-        GameManager.Instance.UpdateAppATT();//todp
+        GameManager.appATTtype = 1;//todo
+        GameManager.Instance.UpdateAppATT();//todo
         AdManager.Instance.Init();
         OtherSdkManager.Instance.Init();
 

@@ -41,14 +41,9 @@ public class AdManager : MonoBehaviour
     /// </summary>
     public void ShowRewardedAd(string _page_id, Action _rewardCallback, Action _displayErrorCallback)
     {
-        DOTween.Sequence().AppendInterval(0.5F).AppendCallback(() =>
-        {
-            _rewardCallback?.Invoke();
-        });
-
-        //applovinMaxRewardOperator.RewardReceivedCallback = _rewardCallback;
-        //applovinMaxRewardOperator.RewardDisplayErrorCallback = _displayErrorCallback;
-        //applovinMaxRewardOperator.ShowRewardedAd();
+        applovinMaxRewardOperator.RewardReceivedCallback = _rewardCallback;
+        applovinMaxRewardOperator.RewardDisplayErrorCallback = _displayErrorCallback;
+        applovinMaxRewardOperator.ShowRewardedAd();
     }
 
     /// <summary>
@@ -62,6 +57,10 @@ public class AdManager : MonoBehaviour
         //applovinMaxRewardOperator2.RewardReceivedCallback = _rewardCallback;
         //applovinMaxRewardOperator2.RewardDisplayErrorCallback = _displayErrorCallback;
         //applovinMaxRewardOperator2.ShowRewardedAd();
+        DOTween.Sequence().AppendInterval(0.5F).AppendCallback(() =>
+        {
+            _rewardCallback?.Invoke();
+        });
     }
 
 
@@ -70,7 +69,7 @@ public class AdManager : MonoBehaviour
     /// </summary>
     public void OnClickInterstitialAd(string _page_id, bool isClick = true)
     {
-        //applovinMaxInterstitialOperator.OnClickInterstitialAd(isClick);
+        applovinMaxInterstitialOperator.OnClickInterstitialAd(isClick);
     }
 
 

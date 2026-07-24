@@ -24,6 +24,7 @@ public class LanguageManager : MonoBehaviour
         Instance = this;
 
         SystemLanguage currentLang = Application.systemLanguage;
+
         if (currentLang == SystemLanguage.Indonesian)
         {
             Debug.Log("当前系统语言是印尼语");

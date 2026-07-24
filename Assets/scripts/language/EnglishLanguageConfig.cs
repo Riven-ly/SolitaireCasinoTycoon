@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
-using static Unity.Collections.AllocatorManager;
 
 public static class EnglishLanguageConfig
 {
@@ -32,17 +29,17 @@ public static class EnglishLanguageConfig
         //建筑
         {"UpgradeArchitecture", "Upgrade the {0}"},
         {"UnlockArchitecture", "Unlock the {0}"},
-        { "Architecture1", "Government Building" },//1
-        { "Architecture2", "Flower Shop" }, //9
-        { "Architecture3", "Police Station" },//8
-        { "Architecture4", "Restaurant" },//5
-        { "Architecture5", "Bank" },//3
-        { "Architecture6", "Shopping Mall" },//2
-        { "Architecture7", "Hospital" },//4
-        { "Architecture8", "School" },//7
-        { "Architecture9", "Iron Gym" },//6
-        { "Architecture10", "Amusement Park" },//10
-        { "Unlocklevel", "Unlock level" },
+        {"Architecture1", "Government Building" },//1
+        {"Architecture2", "Flower Shop" }, //9
+        {"Architecture3", "Police Station" },//8
+        {"Architecture4", "Restaurant" },//5
+        {"Architecture5", "Bank" },//3
+        {"Architecture6", "Shopping Mall" },//2
+        {"Architecture7", "Hospital" },//4
+        {"Architecture8", "School" },//7
+        {"Architecture9", "Iron Gym" },//6
+        {"Architecture10", "Amusement Park" },//10
+        {"Unlocklevel", "Unlock level" },
         {"Output", "Output:"},     
         //gameTips
         {"GameTipsPanel_1", "Summary: In Klondike Solitaire, your goal is to build ascending card stacks in each foundation pile at the top-left corner. Each foundation pile can only hold one suit."},
@@ -122,18 +119,13 @@ public static class EnglishLanguageConfig
         {"TxElementGameStartPanel_t2", "{0} All {1}"},
         {"TxElementGameStartPanel_t3", "Pass The Level Progress + {0}"},
 
-
-        {"Special_Diamond_mymymy", "TW9uZXk="},//特殊钻石名字money
         {"Special_Diamond__unit", "JA=="},//特殊钻石符号$
         {"CHT", "Y2FzaCBvdXQ="},//Cash out
         {"CH", "Q2FzaA=="},//Cash 
-        {"WD", "V0lUSERSQVc="},
+        {"WD", "V0lUSERSQVc="},//Withdraw?
         {"wd", "d2l0aGRyYXc="},
         {"Wh", "V2l0aGRyYXdhbA=="},//Withdrawal 
         {"wh", "d2l0aGRyYXdhbA=="},
-        {"blc", "YmFsYW5jZQ=="},//balance
-        {"Pym", "UGF5bWVudA=="},//Payment
-        {"Pyg", "UGF5aW5n"},//Paying
         {"pp", "cGF5cGFs"},//paypal
         
     };

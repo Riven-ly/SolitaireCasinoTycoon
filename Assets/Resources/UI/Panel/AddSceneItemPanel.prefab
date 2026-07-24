@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 4963178365308400267}
   - component: {fileID: 8584411776079837968}
   - component: {fileID: 2381931204207813436}
+  - component: {fileID: 5693536235829564425}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -212,6 +213,23 @@ MonoBehaviour:
     Value: {fileID: 21300000, guid: 582448b65b09eab41bace660a157f55a, type: 3}
   - Key: 2
     Value: {fileID: 21300000, guid: 247eb3f0465147049a9ba6e2eb5463e6, type: 3}
+--- !u!114 &5693536235829564425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328988544927561509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf255b0bcb076a42b2c3d1c5b6fba68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteList:
+  - Key: 0
+    Value: {fileID: 21300000, guid: 0549b20063209bf4ea32fa14585832e0, type: 3}
+  - Key: 1
+    Value: {fileID: 21300000, guid: 74f16b0d1235e1842afae8d275c87118, type: 3}
 --- !u!1 &2580053572240871194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1508,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 220, y: 160}
+  m_SizeDelta: {x: 220, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &447407910546260420
 CanvasRenderer:

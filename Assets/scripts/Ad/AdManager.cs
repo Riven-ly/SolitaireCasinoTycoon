@@ -50,18 +50,12 @@ public class AdManager : MonoBehaviour
     /// </summary>
     public void ShowRewardedAd2(string _page_id, Action _rewardCallback, Action _displayErrorCallback)
     {
-        //applovinMaxRewardOperator2.page_id = _page_id;
-        //applovinMaxRewardOperator2.new_ad_loading_position = "reward2_loading_" + _page_id;
-        //applovinMaxRewardOperator2.ad_display_position = "reward2_display_" + _page_id;
-        //applovinMaxRewardOperator2.RewardReceivedCallback = _rewardCallback;
-        //applovinMaxRewardOperator2.RewardDisplayErrorCallback = _displayErrorCallback;
-        //applovinMaxRewardOperator2.ShowRewardedAd();
         DOTween.Sequence().AppendInterval(0.5F).AppendCallback(() =>
         {
             _rewardCallback?.Invoke();
+
         });
     }
-
 
     /// <summary>
     /// ≤Â∆¡π„∏Ê

@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1585849938
+CRC: 1595119964
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 874dc68b674f914758195650cde8739c
+    Hash: af0c536576fff1d55dbec0a2228a409f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e2164f546ca692258e7d05426e37ab59
+    Hash: 7d5a610334f61c094f2cd3df3f2318ec
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 874dc68b674f914758195650cde8739c
+    Hash: af0c536576fff1d55dbec0a2228a409f
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -53,6 +53,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: bcf255b0bcb076a42b2c3d1c5b6fba68, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 7ce72a5400777e54eb257da47b72ac9c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
@@ -79,6 +81,8 @@ ClassTypes:
 - Class: 225
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: MultilingualSpriteInfo
 - AssemblyName: Assembly-CSharp
   ClassName: TxElementAccountInfo
 - AssemblyName: Assembly-CSharp
@@ -120,6 +124,7 @@ Assets:
 - Assets/ABRes/TxElement/Texture/finalStep/tanchuang.png
 - Assets/ABRes/TxElement/Texture/progress/jindutiao.png
 - Assets/ABRes/ABResManager/Texture/chaopiaodui.png
+- Assets/ABRes/TxElement/Texture/main/CashBalance-pty.png
 - Assets/ABRes/TxElement/Texture/progress/anniu.png
 - Assets/ABRes/TxElement/Texture/finalStep/A-hui.png
 - Assets/ABRes/TxElement/Texture/tanchuang.png
@@ -128,8 +133,10 @@ Assets:
 - Assets/ABRes/TxElement/Texture/finalStep/R.png
 - Assets/ABRes/TxElement/Texture/finalStep/E-hui.png
 - Assets/ABRes/ABResManager/Texture/chaopiao.png
+- Assets/ABRes/TxElement/Texture/finalStep/FinalStep-pty.png
 - Assets/ABRes/TxElement/Texture/type/2.png
 - Assets/ABRes/TxElement/Texture/main/anniu.png
+- Assets/ABRes/TxElement/Texture/main/withdaw-pty.png
 - Assets/ABRes/ABResManager/ABResManager.prefab
 - Assets/ABRes/TxElement/Prefab/TxElementBtn.prefab
 - Assets/ABRes/TxElement/Texture/TypeSelectPanel/ChooseYourWithdrawalMethod.png
@@ -152,6 +159,7 @@ Assets:
 - Assets/ABRes/TxElement/Texture/main/ding2.png
 - Assets/ABRes/TxElement/Texture/guang2.png
 - Assets/ABRes/TxElement/Texture/TypeSelectPanel/anniu-lan.png
+- Assets/ABRes/TxElement/Texture/TypeSelectPanel/ChooseYourWithdrawalMethod-pty.png
 - Assets/ABRes/TxElement/Prefab/TxElementMananger.prefab
 - Assets/ABRes/TxElement/Texture/finalStep/T-hui.png
 - Assets/ABRes/TxElement/Texture/main/CashBalance.png

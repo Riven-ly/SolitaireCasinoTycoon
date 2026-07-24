@@ -151,10 +151,10 @@ public class SettingPanel : UIBase
     
     public static void OpenPrivacyPolicy()
     {
-       // Application.OpenURL("https://solitairematch.online/privacy-policy");
+        Application.OpenURL("https://sites.google.com/view/solitaire-casino-tycoon");
     }
     public static void OpenTermsOfServic()
     {
-       // Application.OpenURL("https://solitairematch.online/privacy-policy");
+        Application.OpenURL("https://sites.google.com/view/solitaire-casino-tycoon-terms");
     }
 }

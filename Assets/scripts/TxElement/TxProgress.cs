@@ -29,7 +29,14 @@ public class TxProgress : MonoBehaviour,IEventListener
             AudioManager.Instance.PlayBtnMusic();
             UIManager.Instance.OpenUI<TxElementPanel>();
         });
-        btnText.text = LanguageManager.Instance.GetText_Encrypt("WD");
+        if (LanguageManager.Instance.type == MultilingualType.Portuguese)
+        {
+            btnText.text = LanguageManager.Instance.GetText_Encrypt("CHT");
+        }
+        else
+        {
+            btnText.text = LanguageManager.Instance.GetText_Encrypt("WD");
+        }
         tipsText.text = string.Format(LanguageManager.Instance.GetText("TxProgress_Tips"), LanguageManager.Instance.GetText_Encrypt("wd"));
         RefreshProgressUI();
     }

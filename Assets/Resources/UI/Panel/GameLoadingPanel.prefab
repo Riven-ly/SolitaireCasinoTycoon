@@ -417,11 +417,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteList:
   - Key: 0
-    Value: {fileID: 21300000, guid: 7748539956cf38f47900bd522876b674, type: 3}
+    Value: {fileID: 21300000, guid: b9339773db1f57e4ba860e37a19e76aa, type: 3}
   - Key: 1
-    Value: {fileID: 21300000, guid: 55c71c22dcd224040b71a6e1c144a73d, type: 3}
-  - Key: 2
-    Value: {fileID: 21300000, guid: fb8636d0ecd455f488db856fe754f182, type: 3}
+    Value: {fileID: 21300000, guid: 528d7e6dc2ebb7642b7bd7e45a5ee082, type: 3}
 --- !u!1 &4165948332480324780
 GameObject:
   m_ObjectHideFlags: 0

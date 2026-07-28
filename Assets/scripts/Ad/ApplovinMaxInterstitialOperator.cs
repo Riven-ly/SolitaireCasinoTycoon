@@ -188,8 +188,9 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
         AdClickAttributes.ad_platform = adInfo.NetworkName;
         AdClickAttributes.mediation_platform = "max"; 
         AdClickAttributes.ad_id = adInfo.AdUnitIdentifier;
-        AdClickAttributes.ad_type = 3; 
+        AdClickAttributes.ad_type = 3;
         SolarEngine.Analytics.trackAdClick(AdClickAttributes);
+        Debug.Log("上报广告被点击");
     }
 
     private void OnInterstitialHiddenEvent(string adUnitId, MaxSdk.AdInfo adInfo)

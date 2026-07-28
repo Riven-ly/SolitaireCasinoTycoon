@@ -16,7 +16,7 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
     string InsertAdUnitId = "";
     [HideInInspector] public float startInsertTime = 120f;//第一次打开app插屏时间
     [HideInInspector] public float insertTime = 60f;//插屏时间
-    [HideInInspector] public float ad_mau_inter_time = 30f;//插屏冷却时间
+    [HideInInspector] public float ad_mau_inter_time = 45f;//插屏冷却时间
     public float insertTimer = 0;
     public float insertClickCoolingTime = 0f;
     private bool isPlayInsertAds = false;
@@ -120,11 +120,11 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
         //    return;
         //}
         //没评分之前
-        //string str = PlayerPrefs.GetString("EvaluationGameDialog", "");
-        //if (string.IsNullOrEmpty(str))
-        //{
-        //    return;
-        //}
+        string str = PlayerPrefs.GetString("EvaluationGame", "");
+        if (string.IsNullOrEmpty(str))
+        {
+            return;
+        }
 
         ShowInterstitialAd();
     }

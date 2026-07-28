@@ -696,7 +696,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
     {
         if (GameManager.Instance.gameType == GameType.MainGame)
         {
-            if (curLv % 5 == 0)
+            if (curLv % 3 == 0)
             {
                 GameManager.Instance.EvaluationGameCallback = () =>
                 {

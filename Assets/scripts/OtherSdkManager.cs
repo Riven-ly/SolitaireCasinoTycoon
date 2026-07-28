@@ -36,10 +36,12 @@ public class OtherSdkManager : MonoBehaviour
     private void SolarEngineInit()
     {
         string AppKey = "abfb896423afdd36";
+        SolarEngine.Analytics.preInitSeSdk(AppKey);
         SEConfig seConfig = new SEConfig();
+        seConfig.logEnabled = true;
         seConfig.initCompletedCallback = (e) =>
         {
-            Debug.Log("热力引擎初始化成功 :" + e);
+            Debug.Log("SolarEngineInit :" + e);
         };
         SolarEngine.Analytics.initSeSdk(AppKey, seConfig);
     }

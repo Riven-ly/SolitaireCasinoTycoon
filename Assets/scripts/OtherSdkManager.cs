@@ -39,7 +39,7 @@ public class OtherSdkManager : MonoBehaviour
         SEConfig seConfig = new SEConfig();
         seConfig.initCompletedCallback = (e) =>
         {
-            Debug.Log("热力引擎初始化成功");
+            Debug.Log("热力引擎初始化成功 :" + e);
         };
         SolarEngine.Analytics.initSeSdk(AppKey, seConfig);
     }

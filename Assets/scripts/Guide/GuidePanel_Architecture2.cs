@@ -16,6 +16,8 @@ public class GuidePanel_Architecture2 : UIBase
     {
         maskBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("newbie_guide_8_complete", "step", "8");
+
             UIManager.Instance.GetUI<LobbyScenePanel>().ShowShouzhi();
             Hide();
         });

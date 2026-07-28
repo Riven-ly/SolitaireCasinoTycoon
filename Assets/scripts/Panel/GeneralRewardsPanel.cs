@@ -43,6 +43,8 @@ public class GeneralRewardsPanel : UIBase
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
+        OtherSdkManager.Instance.CustomEvent("rewards_show", "show", "");
+
         itemDatas = data as List<ItemData>;
 
         AudioManager.Instance.PlaySceneSingleMusic("rewardPanel");
@@ -61,6 +63,8 @@ public class GeneralRewardsPanel : UIBase
 
     private void AdsCallback()
     {
+        OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_two");
+
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
         UIManager.Instance.OpenUIMask();
         float awaitTime = 0.1f;
@@ -92,6 +96,8 @@ public class GeneralRewardsPanel : UIBase
 
     private void CollectClick()
     {
+        OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_one");
+
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
         UIManager.Instance.OpenUIMask();
         float awaitTime = 0.1f;

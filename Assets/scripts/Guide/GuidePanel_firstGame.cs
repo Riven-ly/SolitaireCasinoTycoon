@@ -20,6 +20,8 @@ public class GuidePanel_firstGame : UIBase
         });
         tagetBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("newbie_guide_1_complete", "step", "1");
+
             DailySignInPanel dailySignInPanel = UIManager.Instance.GetUI<DailySignInPanel>();
             dailySignInPanel.dailySignInCells[0].clickBtn.onClick.Invoke();
             Hide();

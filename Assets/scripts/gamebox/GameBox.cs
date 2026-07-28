@@ -154,6 +154,7 @@ public class GameBox : MonoBehaviour,IEventListener
             {
          
                 UIManager.Instance.HideUIMask();
+                OtherSdkManager.Instance.CustomEvent("game_box_show", "show", "");
                 UIManager.Instance.OpenUI<GeneralRewardsPanel>(allGetRewards, () =>
                 {
                     xiangzi_kai.gameObject.SetActive(false);

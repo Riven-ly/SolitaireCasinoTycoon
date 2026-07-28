@@ -103,8 +103,9 @@ public class TxElementPanel : UIBase
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
-   
-        if(string.IsNullOrEmpty(bobaoStr))
+        OtherSdkManager.Instance.CustomEvent("withdraw_popup_show", "show", "");
+
+        if (string.IsNullOrEmpty(bobaoStr))
         {
             ppStr = LanguageManager.Instance.GetText_Encrypt("pp");
             bobaoStr = LanguageManager.Instance.GetText("TxPanel_BoBao");

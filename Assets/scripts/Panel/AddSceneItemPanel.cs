@@ -66,7 +66,7 @@ public class AddSceneItemPanel : UIBase
             btnMask.transform.position = newPos;
         });
 
-
+      
     }
     public override void Hide()
     {
@@ -105,7 +105,7 @@ public class AddSceneItemPanel : UIBase
 
     private void GetOnClick()
     {
-
+        OtherSdkManager.Instance.CustomEvent("prop_buy", "prop_id_show", "buy");
         GameManager.Instance.playerInfo.Minus_diamond(expendDiamondCnt);
         RefreshGetBtnUI();
 
@@ -129,6 +129,7 @@ public class AddSceneItemPanel : UIBase
 
     private void AdCallback()
     {
+        OtherSdkManager.Instance.CustomEvent("prop_buy", "prop_id_show", "ad_claim");
         sceneItemBase.CanvasTop();
         icon2.gameObject.SetActive(true);
         UIManager.Instance.OpenUIMask();

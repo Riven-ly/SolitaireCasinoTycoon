@@ -41,11 +41,13 @@ public class GameSceneItem_Return : GameSceneItemBase,IEventListener
             UIManager.Instance.OpenUI<AddSceneItemPanel>(this);
             return;
         }
+
         EventManager.Instance.TriggerEvent(GameEvent.StopHintAnim);
         bool isUseItemSucceed = GameStepRecord.Instance.ReturnSteps();
         if (isUseItemSucceed)
         {
-         
+            OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", $"{GameManager.Instance.playerInfo.level}", "prop_id_number", "4");
+
             GameManager.Instance.playerInfo.Minus_item_return(1);
             //GameManager.Instance.SavePlayerInfo();
             Refresh();

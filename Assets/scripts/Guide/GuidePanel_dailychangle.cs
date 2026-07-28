@@ -19,6 +19,8 @@ public class GuidePanel_dailychangle : UIBase
         });
         tagetBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("newbie_guide_10_complete", "step", "10");
+
             PlayerPrefs.SetString("GuidePanel_dailychangle", "yes");
             UIManager.Instance.GetUI<LobbyScenePanel>().dailyBtn.onClick.Invoke();
             Hide();

@@ -63,6 +63,15 @@ public class LobbyScenePanel : UIBase
             timer = 0f;
             shouzhiBtn.gameObject.SetActive(false);
             SetBtnIndex(0);
+
+
+            string Guide_shouzhiBtn = PlayerPrefs.GetString("Guide_shouzhiBtn", "");
+            if (string.IsNullOrEmpty(Guide_shouzhiBtn))
+            {
+                PlayerPrefs.SetString("Guide_shouzhiBtn", "yes");
+                OtherSdkManager.Instance.CustomEvent("newbie_guide_9_complete", "step", "9");
+            }
+
         });
     }
 

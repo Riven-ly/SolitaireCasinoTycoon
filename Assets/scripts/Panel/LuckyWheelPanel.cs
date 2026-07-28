@@ -97,6 +97,7 @@ public class LuckyWheelPanel : UIBase
     {
         base.Refresh(data);
 
+        OtherSdkManager.Instance.CustomEvent("luckyspin", "show", "");
         Init();
 
     }
@@ -110,6 +111,7 @@ public class LuckyWheelPanel : UIBase
         spinBtn.interactable = false;
         canvasGroup.alpha = 0.5f;
         SpinWheel();
+        OtherSdkManager.Instance.CustomEvent("luckyspin", "spin", "");
     }
 
 

@@ -36,6 +36,7 @@ public class GuidePanel_TxPanel : UIBase
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
+        OtherSdkManager.Instance.CustomEvent("newbie_guide_3_complete", "step", "3");
 
         TxElementPanel txPanel = UIManager.Instance.GetUI<TxElementPanel>();
         mask.position = txPanel.slider.transform.position;

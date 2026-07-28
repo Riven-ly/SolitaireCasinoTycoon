@@ -25,6 +25,7 @@ public class DailySignInCell : MonoBehaviour
     {
         clickBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("sign_in_reward", "day", $"{day}");
             AudioManager.Instance.PlayBtnMusic();
             SignIn();
         });

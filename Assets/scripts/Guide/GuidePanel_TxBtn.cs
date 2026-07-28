@@ -19,6 +19,8 @@ public class GuidePanel_TxBtn : UIBase
         });
         tagetBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("newbie_guide_2_complete", "step", "2");
+
             PlayerPrefs.SetString("Guide_TxBtn", "yes");
             AudioManager.Instance.PlayBtnMusic();
             UIManager.Instance.OpenUI<TxElementPanel>();

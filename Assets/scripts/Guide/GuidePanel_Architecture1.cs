@@ -20,6 +20,7 @@ public class GuidePanel_Architecture1 : UIBase
         });
         tagetBtn.onClick.AddListener(() =>
         {
+            OtherSdkManager.Instance.CustomEvent("newbie_guide_7_complete", "step", "7");
             UIManager.Instance.GetUI<ArchitecturePanel>().btn.onClick.Invoke();
             Hide();
         });

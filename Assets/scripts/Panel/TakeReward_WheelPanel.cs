@@ -91,7 +91,7 @@ public class TakeReward_WheelPanel : UIBase
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
-
+        OtherSdkManager.Instance.CustomEvent("game_luckyspin_show", "show", "");
         PlayingCard playingCard = data as PlayingCard;
         panel.gameObject.SetActive(false);
 

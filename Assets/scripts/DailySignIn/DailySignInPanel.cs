@@ -62,7 +62,7 @@ public class DailySignInPanel : UIBase
     {
         base.Refresh(data);
         Init();
-
+        OtherSdkManager.Instance.CustomEvent("sign_in_show", "show", "");
 
         bool isTodaySignIn = DailySignIn.CheckSignIn();//≈–∂œ «∑Ò«©µΩ
 

@@ -32,6 +32,8 @@ public class DailyChallengePanel : MonoBehaviour,IEventListener
     }
     public  void Open()
     {
+        OtherSdkManager.Instance.CustomEvent("daily_challenge_show", "show", "");
+
         gameObject.SetActive(true);
         currentDate = GameManager.Instance.GetNowTime();
         signedDays = LoadSignedDays();
@@ -43,11 +45,13 @@ public class DailyChallengePanel : MonoBehaviour,IEventListener
 
     public void hide()
     {
+        OtherSdkManager.Instance.CustomEvent("daily_challenge_click", "close", "");
         gameObject.SetActive(false);
     }
 
     private void AdsCallback()
     {
+        OtherSdkManager.Instance.CustomEvent("daily_challenge_click", "play", "", "date_id_select",$"{curSelectDay}");
         GameManager.Instance.gameType = GameType.DailyGame;
         UIManager.Instance.GetUI<LobbyScenePanel>().Hide();
         UIManager.Instance.OpenUI<GameScenePanel>();

@@ -34,10 +34,13 @@ public class GameSceneItem_Extract : GameSceneItemBase
             UIManager.Instance.OpenUI<AddSceneItemPanel>(this);
             return;
         }
+
         EventManager.Instance.TriggerEvent(GameEvent.StopHintAnim);
         bool isUseItemSucceed = TryExtractCard();
         if (isUseItemSucceed)
         {
+            OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", $"{GameManager.Instance.playerInfo.level}", "prop_id_number", "2");
+
             GameManager.Instance.playerInfo.Minus_item_extract(1);
             // GameManager.Instance.SavePlayerInfo();
             Refresh();

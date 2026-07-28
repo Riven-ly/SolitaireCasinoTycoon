@@ -43,4 +43,26 @@ public class OtherSdkManager : MonoBehaviour
         };
         SolarEngine.Analytics.initSeSdk(AppKey, seConfig);
     }
+
+    public void CustomEvent(string eName,string _key,string _value)
+    {
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, string _value, string _key2, string _value2)
+    {
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, string _value, string _key2, string _value2, string _key3, string _value3)
+    {
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        customAttributes.Add(_key3, _value3);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
 }

@@ -26,7 +26,7 @@ public class GameLoadingPanel : UIBase
     // Start is called before the first frame update
     void Start()
     {
-
+        OtherSdkManager.Instance.CustomEvent("load_page_open", "loading", "");
         slider.value = 0f;
         loadingText.text = $"{LanguageManager.Instance.GetText("Loading")}...";
 
@@ -118,6 +118,7 @@ public class GameLoadingPanel : UIBase
     }
     public override void Hide()
     {
+        OtherSdkManager.Instance.CustomEvent("load_page_close", "loading", "");
         base.Hide();
     }
 }

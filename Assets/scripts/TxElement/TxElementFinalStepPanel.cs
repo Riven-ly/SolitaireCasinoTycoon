@@ -33,6 +33,7 @@ public class TxElementFinalStepPanel : UIBase
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
+        OtherSdkManager.Instance.CustomEvent("withdraw_two_show", "show", "");
 
         explain.text = LanguageManager.Instance.GetText("FinalStep_explain");
         explain2.text = string.Format(LanguageManager.Instance.GetText("FinalStep_explain2"),LanguageManager.Instance.GetText_Encrypt("CH"));

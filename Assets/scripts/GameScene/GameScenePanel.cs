@@ -132,7 +132,7 @@ public class GameScenePanel : UIBase
         UpdateMoveUI();
 
         GameBox.Instance.Init();
-
+        OtherSdkManager.Instance.CustomEvent("level_start", "level_id", $"{GameManager.Instance.playerInfo.level}");
         StartCoroutine(FaPaiAnimIE());
     }
 
@@ -194,6 +194,8 @@ public class GameScenePanel : UIBase
             isPause = true;
             UIManager.Instance.OpenUI<GameTipsPanel>(null, () =>
             {
+                OtherSdkManager.Instance.CustomEvent("newbie_guide_5_complete", "step", "5");
+
                 isPause = false;
                 if (TxElementMananger.Instance != null && GameManager.Instance.playerInfo.level <= 50)
                 {

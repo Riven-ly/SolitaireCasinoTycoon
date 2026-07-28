@@ -49,11 +49,14 @@ public class GeneralRewardsPanel3 : UIBase
                 break;
             }
         }
+        OtherSdkManager.Instance.CustomEvent("luckyspin_rewards", "show", "");
         rewardAdButton.Init(AdsCallback, page_id, _isContainGold);
     }
 
     private void AdsCallback()
     {
+        OtherSdkManager.Instance.CustomEvent("luckyspin_rewards", "claim", "");
+
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
         UIManager.Instance.OpenUIMask();
         float awaitTime = 0.1f;
@@ -85,6 +88,7 @@ public class GeneralRewardsPanel3 : UIBase
 
     private void CollectClick()
     {
+        OtherSdkManager.Instance.CustomEvent("luckyspin_rewards", "no_thanks", "");
         AdManager.Instance.OnClickInterstitialAd(page_id);
         Hide();
     }

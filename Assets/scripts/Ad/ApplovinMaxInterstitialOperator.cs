@@ -14,11 +14,31 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
     int retryAttempt;
     //-------------------------------
     string InsertAdUnitId = "";
-    [HideInInspector] public float startInsertTime = 120f;//第一次打开app插屏时间
-    [HideInInspector] public float insertTime = 60f;//插屏时间
-    [HideInInspector] public float ad_mau_inter_time = 45f;//插屏冷却时间
+    public static bool inter_enable = true;// 插屏广告总开关
+    public static bool mau_inter = false;// 手动插屏是否强制展示；true忽略冷却间隔，100%展示手动插屏
+    public static float startInsertTime = 120f;//第一次打开app插屏时间
+    public static float insertTime = 60f;//插屏时间
+    public static float ad_mau_inter_time = 45f;//插屏冷却时间
     public float insertTimer = 0;
-    public float insertClickCoolingTime = 0f;
+    private float insertClickCoolingTime_P;
+    public float insertClickCoolingTime
+    {
+        get
+        {
+            if (mau_inter)
+            {
+                return 0f;
+            }
+            else
+            {
+                return insertClickCoolingTime_P;
+            }
+        }
+        set
+        {
+            insertClickCoolingTime_P = value;
+        }
+    }
     private bool isPlayInsertAds = false;
 
     private bool isInit = false;
@@ -109,6 +129,7 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
 
     public void OnClickInterstitialAd(bool isClick = true)
     {
+        if (!inter_enable) return;
         if (isPlayInsertAds) return;
         if (insertClickCoolingTime > 0) return;
 

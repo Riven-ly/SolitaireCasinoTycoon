@@ -650,6 +650,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         GameScenePanel.isPause = true;
         UIManager.Instance.HideUIMask();
         int curLv = GameManager.Instance.playerInfo.level;
+        OtherSdkManager.Instance.CustomEvent("level_complete", "level_id", GameManager.Instance.playerInfo.level);
         if (GameManager.Instance.gameType == GameType.MainGame)
         {
             GameManager.Instance.playerInfo.level++;

@@ -132,7 +132,7 @@ public class GameScenePanel : UIBase
         UpdateMoveUI();
 
         GameBox.Instance.Init();
-        OtherSdkManager.Instance.CustomEvent("level_start", "level_id", $"{GameManager.Instance.playerInfo.level}");
+        OtherSdkManager.Instance.CustomEvent("level_start", "level_id", GameManager.Instance.playerInfo.level);
         StartCoroutine(FaPaiAnimIE());
     }
 

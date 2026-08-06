@@ -98,7 +98,7 @@ public class SettingPanel : UIBase
         quitBtn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
-            OtherSdkManager.Instance.CustomEvent("level_quit", "level_id", $"{GameManager.Instance.playerInfo.level}");
+            OtherSdkManager.Instance.CustomEvent("level_quit", "level_id", GameManager.Instance.playerInfo.level);
             callback = () =>
             {
                 AdManager.Instance.OnClickInterstitialAd(page_id);

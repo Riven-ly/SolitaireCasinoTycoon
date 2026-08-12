@@ -98,7 +98,7 @@ public class GameWinPanel : UIBase
         }
         allscore = gameScenePanel.score + addMovescore + addTimescore;
 
-        OtherSdkManager.Instance.CustomEvent("level_complete", "level_id", $"{GameManager.Instance.playerInfo.level}", "score", $"{allscore}");
+        OtherSdkManager.Instance.CustomEvent("level_complete", "level_id", GameManager.Instance.playerInfo.level, "score", $"{allscore}");
 
         DOTween.Sequence()
             .AppendInterval(0.2f)
@@ -156,7 +156,7 @@ public class GameWinPanel : UIBase
         rewardAdButton.Init(AdsCallback, page_id, true);
 
         string lv_1 = PlayerPrefs.GetString("Guide_LV1", "");
-        if (string.IsNullOrEmpty("lv_1"))
+        if (string.IsNullOrEmpty(lv_1))
         {
             PlayerPrefs.SetString("Guide_LV1", "yes");
             OtherSdkManager.Instance.CustomEvent("newbie_guide_6_complete", "step", "6");
@@ -165,7 +165,7 @@ public class GameWinPanel : UIBase
 
     private void AdsCallback()
     {
-        OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", $"{GameManager.Instance.playerInfo.level - 1}", "click", "claim_more");
+        OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", GameManager.Instance.playerInfo.level - 1, "click", "claim_more");
 
         ScoreAnimStop();
 
@@ -203,7 +203,7 @@ public class GameWinPanel : UIBase
 
     private void CollectClick()
     {
-        OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id",$"{GameManager.Instance.playerInfo.level - 1}","click", "claim");
+        OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", GameManager.Instance.playerInfo.level - 1, "click", "claim");
         ScoreAnimStop();
 
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();

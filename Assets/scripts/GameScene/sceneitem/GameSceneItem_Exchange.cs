@@ -38,7 +38,7 @@ public class GameSceneItem_Exchange : GameSceneItemBase
         bool isUseItemSucceed = TryExchangeAllPlayingCard();
         if (isUseItemSucceed)
         {
-            OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", $"{GameManager.Instance.playerInfo.level}", "prop_id_number", "3");
+            OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", GameManager.Instance.playerInfo.level, "prop_id_number", "3");
 
             GameManager.Instance.playerInfo.Minus_item_exchange(1);
             //GameManager.Instance.SavePlayerInfo();

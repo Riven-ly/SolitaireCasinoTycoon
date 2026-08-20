@@ -130,6 +130,10 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         takeRewardType = TakeRewardType.NULL;
         UpdateTakeRewardUI();
 
+        if (GameManager.Instance.playerInfo.level <= 1)
+        {
+            return;
+        }
         if (playingCardQueue != null && frontOrBack == PlayingCard_FrontOrBack.Back)
         {
             takeRewardType = TakeRewardType.Wheel;//°²ÅÅ±ê¼Ç

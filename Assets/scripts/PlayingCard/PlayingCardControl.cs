@@ -12,6 +12,12 @@ public enum PlayingCard_Shuffling
     NO_A23,
 }
 
+public class SinglePlayingCard
+{
+    public PlayingCardType type;
+    public int order;
+}
+
 public class ShufflingBase
 {
     public PlayingCard_FrontOrBack frontOrBack;
@@ -92,6 +98,15 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
 
         //CreatPlayingCardQueue();
         CreatPlayingCardQueue2();
+
+        if (GameManager.Instance.playerInfo.level <= 1)
+        {
+            InitLevel1ResidueCards();
+        }
+        foreach (var item in residueCards)
+        {
+            Debug.Log(item.GetName());
+        }
         residuePlayingCards.Init(residueCards);
 
         curBackPlayingCardCnt = 21;
@@ -101,6 +116,41 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
             card.RandomTaskRerard();
             card.lastGameSteps= new GameStep(card.gameSteps);
         }
+    }
+
+    public void InitLevel1ResidueCards()
+    {
+        var targetTemplate = new List<(PlayingCardType type, int order)>
+                  {
+                      (PlayingCardType.spades, 1),     //ºÚÌÒ2
+                      (PlayingCardType.clubs, 3),      //Ã·»¨4
+                      (PlayingCardType.spades, 2),     //ºÚÌÒ3
+                      (PlayingCardType.spades, 3),     //ºÚÌÒ4
+                      (PlayingCardType.diamonds,4),    //·½¿é5
+                      (PlayingCardType.clubs,5),       //Ã·»¨6
+                      (PlayingCardType.hearts,6),      //ºìÌÒ7
+                      (PlayingCardType.clubs,6),       //Ã·»¨7
+                      (PlayingCardType.hearts,7),      //ºìÌÒ8
+                      (PlayingCardType.hearts,8),      //ºìÌÒ9
+                      (PlayingCardType.spades,8),      //ºÚÌÒ9
+                      (PlayingCardType.spades,9),      //ºÚÌÒ10
+                      (PlayingCardType.hearts,9),      //ºìÌÒ10
+                      (PlayingCardType.hearts,10),     //ºìÌÒJ
+                      (PlayingCardType.clubs,10),      //Ã·»¨J
+                      (PlayingCardType.spades,10),     //ºÚÌÒJ
+                      (PlayingCardType.clubs,11),      //Ã·»¨Q
+                      (PlayingCardType.hearts,11),     //ºìÌÒQ
+                      (PlayingCardType.diamonds,11),   //·½¿éQ
+                      (PlayingCardType.spades,11),     //ºÚÌÒQ
+                      (PlayingCardType.hearts,12),     //ºìÌÒK
+                      (PlayingCardType.diamonds,12),   //·½¿éK
+                      (PlayingCardType.clubs,12),      //Ã·»¨K
+                      (PlayingCardType.spades,12)      //ºÚÌÒK
+                  };
+
+        residueCards = residueCards
+            .OrderByDescending(c => targetTemplate.FindIndex(t => t.type == c.type && t.order == c.order))
+            .ToList();
     }
 
     public int QueueBackCardCnt()

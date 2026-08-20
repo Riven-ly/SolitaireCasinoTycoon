@@ -129,6 +129,7 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
 
     public void OnClickInterstitialAd(bool isClick = true)
     {
+        if (!isInit) return;
         if (!inter_enable) return;
         if (isPlayInsertAds) return;
         if (insertClickCoolingTime > 0) return;

@@ -155,21 +155,21 @@ public class OtherSdkManager : MonoBehaviour
                 }
             }
 
-            // att_code - 归因标识，渠道区分字符串
-            if (allConfig.TryGetValue("att_code", out var attCodeObj))
-            {
-                string result = attCodeObj.ToString();
-                Debug.Log("远程参数 att_code = " + result);
-                if (!string.IsNullOrEmpty(result) && result.Contains("T"))
-                {
-                    GameManager.appATTtype = 0;
-                }
-                else
-                {
-                    GameManager.appATTtype = 1;
-                }
-                GameManager.Instance.UpdateAppATT();
-            }
+            //// att_code - 归因标识，渠道区分字符串
+            //if (allConfig.TryGetValue("att_code", out var attCodeObj))
+            //{
+            //    string result = attCodeObj.ToString();
+            //    Debug.Log("远程参数 att_code = " + result);
+            //    if (!string.IsNullOrEmpty(result) && result.Contains("T"))
+            //    {
+            //        GameManager.appATTtype = 0;
+            //    }
+            //    else
+            //    {
+            //        GameManager.appATTtype = 1;
+            //    }
+            //    GameManager.Instance.UpdateAppATT();
+            //}
         });
     }
 

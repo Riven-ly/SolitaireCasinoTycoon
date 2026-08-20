@@ -26,7 +26,6 @@ public class GameLoadingPanel : UIBase
     // Start is called before the first frame update
     void Start()
     {
-        OtherSdkManager.Instance.CustomEvent("load_page_open", "loading", "");
         slider.value = 0f;
         loadingText.text = $"{LanguageManager.Instance.GetText("Loading")}...";
 
@@ -87,10 +86,13 @@ public class GameLoadingPanel : UIBase
         }
 
         //2.各个SDK初始化
+        GameManager.appATTtype = 1;
+        GameManager.Instance.UpdateAppATT();
 
         //3.loading进度条动起来
         slider.DOValue(0.9f, 1.8f).SetEase(Ease.Linear);
         yield return new WaitForSeconds(1.8f);
+        OtherSdkManager.Instance.CustomEvent("load_page_open", "loading", "");
 
         //4.游戏资源准备
         while (!GameManager.LoadABAsyncOK)

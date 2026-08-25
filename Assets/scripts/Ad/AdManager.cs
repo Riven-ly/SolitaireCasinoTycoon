@@ -2,7 +2,6 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 
-
 public class AdManager : MonoBehaviour
 {
     public static AdManager Instance;

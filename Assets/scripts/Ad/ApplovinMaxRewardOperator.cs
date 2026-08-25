@@ -102,10 +102,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
     }
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         isAdLoading = false;
         // Rewarded ad is ready for you to show. MaxSdk.IsRewardedAdReady(adUnitId) now returns 'true'.
         // Reset retry attempt
@@ -115,10 +111,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdLoadFailedEvent(string adUnitId, MaxSdk.ErrorInfo errorInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         // Rewarded ad failed to load
         // AppLovin recommends that you retry with exponentially higher delays, up to a maximum delay (in this case 64 seconds).
         isAdLoading = false;
@@ -131,19 +123,12 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdDisplayedEvent(string adUnitId, MaxSdk.AdInfo adInfo) 
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         Debug.Log("激励视频展示");
+        OtherSdkManager.Instance.SendPixalateRequest(adInfo.AdUnitIdentifier);
     }
 
     private void OnRewardedAdFailedToDisplayEvent(string adUnitId, MaxSdk.ErrorInfo errorInfo, MaxSdk.AdInfo adInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         // Rewarded ad failed to display. AppLovin recommends that you load the next ad.
 
         isPlayRewardAds = false;
@@ -156,10 +141,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdClickedEvent(string adUnitId, MaxSdk.AdInfo adInfo) 
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         Debug.Log("激励视频点击");
         if (!OtherSdkManager.IsInit)
         {
@@ -175,10 +156,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdHiddenEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         // Rewarded ad is hidden. Pre-load the next ad
         playRewardAdCompleteCallback?.Invoke();
         playRewardAdCompleteCallback = null;
@@ -191,10 +168,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward, MaxSdk.AdInfo adInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         // The rewarded ad displayed and the user should receive the reward.
         //获得奖励时还没走Close
         if (isPlayRewardAds)
@@ -218,10 +191,6 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
 
     private void OnRewardedAdRevenuePaidEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        if (RewardedAdUnitId != adUnitId)
-        {
-            return;
-        }
         OnRewardedAdRevenuePaidEvent(adInfo);
 
     }
@@ -229,10 +198,7 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
     private void OnRewardedAdRevenuePaidEvent(MaxSdk.AdInfo adInfo)
     {
         // Ad revenue paid. Use this callback to track user revenue.
-        if (!OtherSdkManager.IsInit)
-        {
-            return;
-        }
+       
         //----------------Adjust------------------------------
         var adRevenue = new AdjustAdRevenue("applovin_max_sdk");
         adRevenue.SetRevenue(adInfo.Revenue, "USD");
@@ -241,6 +207,10 @@ public class ApplovinMaxRewardOperator : MonoBehaviour
         adRevenue.AdRevenuePlacement = adInfo.Placement;
         Adjust.TrackAdRevenue(adRevenue);
         //----------------热力---------------------------
+        if (!OtherSdkManager.IsInit)
+        {
+            return;
+        }
         ImpressionAttributes impressionAttributes = new ImpressionAttributes();
         impressionAttributes.ad_platform = adInfo.NetworkName;
         impressionAttributes.ad_id = adInfo.AdUnitIdentifier;

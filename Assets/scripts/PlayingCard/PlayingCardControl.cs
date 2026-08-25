@@ -105,7 +105,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         }
         foreach (var item in residueCards)
         {
-            Debug.Log(item.GetName());
+            //Debug.Log(item.GetName());
         }
         residuePlayingCards.Init(residueCards);
 

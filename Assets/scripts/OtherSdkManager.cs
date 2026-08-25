@@ -20,13 +20,17 @@ public class OtherSdkManager : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        pixalateSystem = new PixalateSystem();
+        pixalateSystem.Init();
+    }
 
     public void Init()
     {
         Debug.Log("Other SDK≥ı ºªØ");
 
-        pixalateSystem = new PixalateSystem();
-        pixalateSystem.Init();
+   
         AdjustInit();
         SolarEngineInit();
     }

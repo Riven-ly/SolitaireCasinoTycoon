@@ -24,7 +24,7 @@ public class GeneralRewardsPanel2 : UIBase
         collectBtn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
-            AdManager.Instance.OnClickInterstitialAd(page_id);
+            AdManager.Instance.OnClickInterstitialAd("GameBoxRewardsPanel");
             CollectClick();
         });
     }
@@ -36,35 +36,16 @@ public class GeneralRewardsPanel2 : UIBase
     {
         base.Refresh(data);
         itemDatas = data as List<ItemData>;
+        OtherSdkManager.Instance.CustomEvent("rewards_show", "show", "");
         AudioManager.Instance.PlaySceneSingleMusic("rewardPanel");
-
-        RectTransform rectTransform = itemRoot.GetComponent<RectTransform>();
-        if(itemDatas.Count == 1)
-        {
-            rectTransform.sizeDelta = new Vector2(500f, 500f);
-            itemRoot.localScale = Vector3.one;
-        }
-        else if(itemDatas.Count == 2)
-        {
-            rectTransform.sizeDelta = new Vector2(1000f, 500f);
-            itemRoot.localScale = Vector3.one;
-        }
-        else if (itemDatas.Count == 3)
-        {
-            rectTransform.sizeDelta = new Vector2(1500f, 500f);
-            itemRoot.localScale = Vector3.one * 0.7f;
-        }
-        else if (itemDatas.Count == 4)
-        {
-            rectTransform.sizeDelta = new Vector2(2000f, 500f);
-            itemRoot.localScale = Vector3.one * 0.5f;
-        }
 
         itemBase = GameManager.Instance.CreatItems(itemDatas, itemRoot);
     }
 
     private void CollectClick()
     {
+        OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_one");
+
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
         UIManager.Instance.OpenUIMask();
         float awaitTime = 0.1f;

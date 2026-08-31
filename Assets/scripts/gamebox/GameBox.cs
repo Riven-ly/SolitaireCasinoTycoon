@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameBox : MonoBehaviour,IEventListener
 {
     public static GameBox Instance;
+    public static int curLv;
 
     public Transform effectPoint;
     public Transform xiangzi;
@@ -42,15 +43,15 @@ public class GameBox : MonoBehaviour,IEventListener
             targetCnt = new List<int>() { 15, 30, 50 };
             rewards = new List<List<ItemData>>();
             List<ItemData> itemDatas = new List<ItemData>();
-            itemDatas.Add(new ItemData(ItemType.GoldDui, 0.5f));
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 10f));
             rewards.Add(itemDatas);
 
             List<ItemData> itemDatas2 = new List<ItemData>();
-            itemDatas2.Add(new ItemData(ItemType.GoldDui, 1.5f));
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 15f));
             rewards.Add(itemDatas2);
 
             List<ItemData> itemDatas3 = new List<ItemData>();
-            itemDatas3.Add(new ItemData(ItemType.GoldDui, 2f));
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 20f));
             rewards.Add(itemDatas3);
         }
 
@@ -98,7 +99,7 @@ public class GameBox : MonoBehaviour,IEventListener
     /// </summary>
     /// <param name="_callback"></param>
     /// <returns></returns>
-    public bool CheckBoxProgress(Action _callback = null)
+    public bool CheckBoxProgress(int _lv,Action _callback = null)
     {
         // 全部奖励已领完，直接回调退出
         if (rewardIndex >= targetCnt.Count)
@@ -155,13 +156,28 @@ public class GameBox : MonoBehaviour,IEventListener
          
                 UIManager.Instance.HideUIMask();
                 OtherSdkManager.Instance.CustomEvent("game_box_show", "show", "");
-                UIManager.Instance.OpenUI<GeneralRewardsPanel>(allGetRewards, () =>
+                if(_lv == 1)
                 {
-                    xiangzi_kai.gameObject.SetActive(false);
-                    GameScenePanel.isPause = false;
-                    UpdateProgressUI();
-                    _callback?.Invoke();
-                });
+                    UIManager.Instance.OpenUI<GeneralRewardsPanel2>(allGetRewards, () =>
+                    {
+                        xiangzi_kai.gameObject.SetActive(false);
+                        GameScenePanel.isPause = false;
+                        UpdateProgressUI();
+                        _callback?.Invoke();
+                    });
+                }
+                else
+                {
+                    curLv = _lv;
+                    UIManager.Instance.OpenUI<GeneralRewardsPanel>(allGetRewards, () =>
+                    {
+                        xiangzi_kai.gameObject.SetActive(false);
+                        GameScenePanel.isPause = false;
+                        UpdateProgressUI();
+                        _callback?.Invoke();
+                    });
+                }
+                  
             })
             ;
         return true;

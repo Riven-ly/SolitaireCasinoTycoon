@@ -48,8 +48,8 @@ public class TakeReward_WheelPanel : UIBase
         isInit = true;
 
         configs = new List<ItemData>();
-        configs.Add(new ItemData(ItemType.GoldDui, 0.5f));
-        configs.Add(new ItemData(ItemType.GoldDui, 5f));
+        configs.Add(new ItemData(ItemType.GoldDui, 10f));
+        configs.Add(new ItemData(ItemType.GoldDui, 25f));
         configs.Add(new ItemData(ItemType.DiamondDui, 150));
         configs.Add(new ItemData(ItemType.DiamondDui, 300));
         configs.Add(new ItemData(ItemType.Hint, 1));
@@ -149,7 +149,7 @@ public class TakeReward_WheelPanel : UIBase
             .AppendCallback(() =>
             {
                 UIManager.Instance.HideUIMask();
-                UIManager.Instance.OpenUI<GeneralRewardsPanel>(itemDatas, () =>
+                UIManager.Instance.OpenUI<TakeReward_WheelRewardPanel>(itemDatas, () =>
                 {
                     Hide();
                 });

@@ -704,7 +704,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         {
             GameManager.Instance.playerInfo.level++;
             //Ïä×Ó
-            GameBox.Instance.CheckBoxProgress(() =>
+            GameBox.Instance.CheckBoxProgress(curLv ,() =>
             {
                 GameScenePanel.isPause = true;
                 UIManager.Instance.OpenUI<GameWinPanel>(null, () =>
@@ -730,7 +730,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         else if (GameManager.Instance.gameType == GameType.DailyGame)
         {
             //Ïä×Ó
-            GameBox.Instance.CheckBoxProgress(() =>
+            GameBox.Instance.CheckBoxProgress(curLv ,() =>
             {
                 GameScenePanel.isPause = true;
                 UIManager.Instance.OpenUI<GameWinPanel>(null, () =>

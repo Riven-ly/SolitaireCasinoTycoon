@@ -44,6 +44,9 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
     private bool isInit = false;
     private string admobNetworkName;
     private bool isAdLoading;
+
+    private bool IsClick;
+    private string page_id;
 	public void Init()
     {
         insertTimer = startInsertTime;
@@ -64,7 +67,7 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
             if (insertTimer <= 0 && insertClickCoolingTime <= 0)
             {
                 insertTimer = insertTime;
-                OnClickInterstitialAd(false);
+                OnClickInterstitialAd("auto_interstitial_show", false);
 
             }
             if (insertClickCoolingTime > 0)
@@ -127,7 +130,7 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
         }
     }
 
-    public void OnClickInterstitialAd(bool isClick = true)
+    public void OnClickInterstitialAd(string _page_id, bool isClick = true)
     {
         if (!isInit) return;
         if (!inter_enable) return;
@@ -147,7 +150,8 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
         {
             return;
         }
-
+        IsClick = isClick;
+        page_id = _page_id;
         ShowInterstitialAd();
     }
     private void LoadInterstitial()
@@ -190,6 +194,14 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
     {
         Debug.Log("插屏广告展示成功");
         OtherSdkManager.Instance.SendPixalateRequest(adInfo.AdUnitIdentifier);
+        if(IsClick)
+        {
+            OtherSdkManager.Instance.CustomEvent("manual_interstitial_show", "page_id", page_id);
+        }
+        else
+        {
+            OtherSdkManager.Instance.CustomEvent("auto_interstitial_show", "level_id", GameManager.Instance.playerInfo.level);
+        }
     }
 
     private void OnInterstitialAdFailedToDisplayEvent(string adUnitId, MaxSdk.ErrorInfo errorInfo, MaxSdk.AdInfo adInfo)

@@ -52,6 +52,8 @@ public class DailyChallengePanel : MonoBehaviour,IEventListener
     private void AdsCallback()
     {
         OtherSdkManager.Instance.CustomEvent("daily_challenge_click", "play", "", "date_id_select",$"{curSelectDay}");
+        OtherSdkManager.Instance.CustomEvent("daily_challenge_start", "day", curSelectDay);
+
         GameManager.Instance.gameType = GameType.DailyGame;
         UIManager.Instance.GetUI<LobbyScenePanel>().Hide();
         UIManager.Instance.OpenUI<GameScenePanel>();

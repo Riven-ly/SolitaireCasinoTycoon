@@ -53,8 +53,8 @@ public class LuckyWheelPanel : UIBase
         isInit = true;
 
         configs = new List<ItemData>();
-        configs.Add(new ItemData(ItemType.GoldDui, 0.5f));
-        configs.Add(new ItemData(ItemType.GoldDui, 5f));
+        configs.Add(new ItemData(ItemType.GoldDui, 10f));
+        configs.Add(new ItemData(ItemType.GoldDui, 25f));
         configs.Add(new ItemData(ItemType.DiamondDui, 150));
         configs.Add(new ItemData(ItemType.DiamondDui, 300));
         configs.Add(new ItemData(ItemType.Hint, 1));

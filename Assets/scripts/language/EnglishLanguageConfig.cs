@@ -17,6 +17,7 @@ public static class EnglishLanguageConfig
         {"BUY", "BUY"},
         {"FREE", "FREE"},
         {"OK", "OK"},
+        {"OnlyClaim", "Only Claim"},
         {"PrivacyPolicy", "Privacy Policy"},
         {"TermsofService", "Terms of Service"},
         //ÍøÂç

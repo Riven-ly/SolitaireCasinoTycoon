@@ -1,9 +1,6 @@
 using DG.Tweening;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Bson;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +52,7 @@ public class ArchitectureCell : MonoBehaviour
 
     private bool awaitUnLockAnim = false;
     private Image icon;
-
+    private string unit;
     private void Start()
     {
         btn1.onClick.AddListener(() =>
@@ -113,6 +110,8 @@ public class ArchitectureCell : MonoBehaviour
             playerInfoUI.StartGoldAnim();
             UpdateGold();
             GameManager.Instance.SavePlayerInfo();
+
+            OtherSdkManager.Instance.CustomEvent("home_architecture_reward_claim", "architecture_id", type.ToString());
         }
     }
 
@@ -217,7 +216,11 @@ public class ArchitectureCell : MonoBehaviour
         }
 
         float curGold = thisData.gold / 100f;
-        goldText.text = $"{curGold}";
+        if (string.IsNullOrEmpty(unit))
+        {
+            unit = LanguageManager.Instance.GetText_Encrypt("Special_Diamond__unit");
+        }
+        goldText.text = $"{unit}{curGold}";
         jinduImg.fillAmount = (float)thisData.gold / maxGold;
         //if (thisData.gold < maxGold)
         //{

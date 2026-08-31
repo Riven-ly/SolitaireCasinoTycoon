@@ -621,7 +621,7 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         playingCardControl.CheckQueueTaskReward(() =>
         {
             bool temisRecycleDrag = isRecycleDrag;
-            bool isBoxReward = GameBox.Instance.CheckBoxProgress();
+            bool isBoxReward = GameBox.Instance.CheckBoxProgress(GameManager.Instance.playerInfo.level);
             if (!isBoxReward)
             {
                 if (!temisRecycleDrag)

@@ -62,7 +62,7 @@ public class AdManager : MonoBehaviour
     /// </summary>
     public void OnClickInterstitialAd(string _page_id, bool isClick = true)
     {
-        applovinMaxInterstitialOperator.OnClickInterstitialAd(isClick);
+        applovinMaxInterstitialOperator.OnClickInterstitialAd(_page_id, isClick);
     }
 
 

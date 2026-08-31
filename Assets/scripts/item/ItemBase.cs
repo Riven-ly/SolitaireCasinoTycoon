@@ -56,6 +56,11 @@ public class ItemBase : MonoBehaviour
         {
             unit = "x";
         }
+        else if (itemType == ItemType.Gold || itemType == ItemType.GoldDui)
+        {
+            unit = LanguageManager.Instance.GetText_Encrypt("Special_Diamond__unit");
+        }
+
         cntText.text = unit + count.ToString();
 
         if(itemType == ItemType.Gold)

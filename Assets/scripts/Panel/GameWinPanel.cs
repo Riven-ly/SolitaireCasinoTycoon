@@ -16,6 +16,7 @@ public class GameWinPanel : UIBase
 
     public Button claimBtn;
     public RewardAdButton rewardAdButton;
+    public Button noAdButton;
 
     public Transform itemRoot;
     private List<ItemBase> itemBase;
@@ -23,7 +24,6 @@ public class GameWinPanel : UIBase
     private int addTimescore;
     private int allscore;
     private string page_id = "GameWinPanel";
-
     private void OnEnable()
     {
         isOpen = true;
@@ -44,6 +44,13 @@ public class GameWinPanel : UIBase
             AudioManager.Instance.PlayBtnMusic();
             CollectClick();
         });
+
+        noAdButton.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.PlayBtnMusic();
+            AdsCallback();
+        });
+        
     }
 
     public void ScoreAnimStop()
@@ -98,7 +105,7 @@ public class GameWinPanel : UIBase
         }
         allscore = gameScenePanel.score + addMovescore + addTimescore;
 
-        OtherSdkManager.Instance.CustomEvent("level_complete", "level_id", GameManager.Instance.playerInfo.level, "score", $"{allscore}");
+        OtherSdkManager.Instance.CustomEvent("level_complete", "level_id", GameManager.Instance.playerInfo.level - 1, "score", $"{allscore}");
 
         DOTween.Sequence()
             .AppendInterval(0.2f)
@@ -161,11 +168,17 @@ public class GameWinPanel : UIBase
             PlayerPrefs.SetString("Guide_LV1", "yes");
             OtherSdkManager.Instance.CustomEvent("newbie_guide_6_complete", "step", "6");
         }
+
+        noAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) == 1);
+        rewardAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) != 1);
+        claimBtn.transform.parent.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) != 1);
+
     }
 
     private void AdsCallback()
     {
         OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", GameManager.Instance.playerInfo.level - 1, "click", "claim_more");
+        OtherSdkManager.Instance.CustomEvent("settlement_ad_reward_claim", "level_id", GameManager.Instance.playerInfo.level - 1);
 
         ScoreAnimStop();
 
@@ -204,6 +217,8 @@ public class GameWinPanel : UIBase
     private void CollectClick()
     {
         OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", GameManager.Instance.playerInfo.level - 1, "click", "claim");
+        OtherSdkManager.Instance.CustomEvent("settlement_single_reward_claim", "level_id", GameManager.Instance.playerInfo.level - 1);
+
         ScoreAnimStop();
 
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();

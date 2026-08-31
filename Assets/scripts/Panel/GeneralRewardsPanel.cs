@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,13 @@ public class GeneralRewardsPanel : UIBase
     public RewardAdButton rewardAdButton;
     public Button collectBtn;
     public Transform collectTrans;
+    public Text collectText;
 
     private List<ItemData> itemDatas;
     private List<ItemBase> itemBase;
 
     private string page_id = "GeneralRewardsPanel";
+    private string unit;
     private void Awake()
     {
         RectTransform rect = root.GetComponent<RectTransform>();
@@ -27,7 +30,7 @@ public class GeneralRewardsPanel : UIBase
         collectBtn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
-            AdManager.Instance.OnClickInterstitialAd(page_id);
+            AdManager.Instance.OnClickInterstitialAd("GameBoxRewardsPanel");
             CollectClick();
         });
     }
@@ -52,18 +55,24 @@ public class GeneralRewardsPanel : UIBase
         bool _isContainGold = false;
         foreach (var itemdata in itemDatas)
         {
-            if(itemdata.itemType == ItemType.Gold || itemdata.itemType == ItemType.Diamond)
+            if (itemdata.itemType == ItemType.Gold || itemdata.itemType == ItemType.Diamond)
             {
                 _isContainGold = true;
                 break;
             }
         }
+        if(string.IsNullOrEmpty(unit))
+        {
+            unit = LanguageManager.Instance.GetText_Encrypt("Special_Diamond__unit");
+        }
+        collectText.text = $"{LanguageManager.Instance.GetText("OnlyClaim")} {unit}{MathF.Round(itemDatas[0].count / 10f, 2)}";
         rewardAdButton.Init(AdsCallback, page_id, _isContainGold);
     }
 
     private void AdsCallback()
     {
         OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_two");
+        OtherSdkManager.Instance.CustomEvent("general_reward_ad_claim", "level_id", GameBox.curLv);
 
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
         UIManager.Instance.OpenUIMask();
@@ -81,7 +90,6 @@ public class GeneralRewardsPanel : UIBase
                 playerInfoUI.DiamondCanvasTop();
             }
 
-            item.GetItemReward();
             item.GetItemReward();
             item.PlayItemAnim();
         }
@@ -113,6 +121,7 @@ public class GeneralRewardsPanel : UIBase
                 awaitTime = 2f;
                 playerInfoUI.DiamondCanvasTop();
             }
+            item.count = MathF.Round(item.count / 10f, 2);
             item.GetItemReward();
             item.PlayItemAnim();
         }

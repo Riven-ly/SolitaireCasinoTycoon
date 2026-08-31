@@ -20,6 +20,7 @@ public static class PortugueseLanguageConfig
         {"BUY", "Comprar"},
         {"FREE", "Grátis"},
         {"OK", "OK"},
+        {"OnlyClaim", "Só Resgatar"},
         {"PrivacyPolicy", "Política de Privacidade"},
         {"TermsofService", "Termos de Serviço"},
         //网络

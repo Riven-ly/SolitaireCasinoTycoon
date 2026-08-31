@@ -58,8 +58,14 @@ public class EvaluationGamePanel : UIBase
     public override void Hide()
     {
         GameScenePanel.isPause = false;
+        string str = PlayerPrefs.GetString("EvaluationGame", "");
+        if (string.IsNullOrEmpty(str))
+        {
+            AdManager.Instance.applovinMaxInterstitialOperator.insertClickCoolingTime = 0f;
+            AdManager.Instance.applovinMaxInterstitialOperator.insertTimer = ApplovinMaxInterstitialOperator.insertTime;
+            PlayerPrefs.SetString("EvaluationGame", "yes");
+        }
         base.Hide();
-        PlayerPrefs.SetString("EvaluationGame", "yes");
     }
 
     private void PingJiaTiaoZhuan()

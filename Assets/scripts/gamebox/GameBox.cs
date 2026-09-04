@@ -38,22 +38,69 @@ public class GameBox : MonoBehaviour,IEventListener
 
     public void Init()
     {
-        if(rewards == null)
+        targetCnt = new List<int>() { 15, 30, 50 };
+        if(GameManager.Instance.playerInfo.level == 1)
         {
-            targetCnt = new List<int>() { 15, 30, 50 };
             rewards = new List<List<ItemData>>();
             List<ItemData> itemDatas = new List<ItemData>();
-            itemDatas.Add(new ItemData(ItemType.GoldDui, 10f));
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 20));
             rewards.Add(itemDatas);
 
             List<ItemData> itemDatas2 = new List<ItemData>();
-            itemDatas2.Add(new ItemData(ItemType.GoldDui, 15f));
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 20));
             rewards.Add(itemDatas2);
 
             List<ItemData> itemDatas3 = new List<ItemData>();
-            itemDatas3.Add(new ItemData(ItemType.GoldDui, 20f));
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 20));
             rewards.Add(itemDatas3);
         }
+        else if (GameManager.Instance.playerInfo.level == 2)
+        {
+            rewards = new List<List<ItemData>>();
+            List<ItemData> itemDatas = new List<ItemData>();
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 10));
+            rewards.Add(itemDatas);
+
+            List<ItemData> itemDatas2 = new List<ItemData>();
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 10));
+            rewards.Add(itemDatas2);
+
+            List<ItemData> itemDatas3 = new List<ItemData>();
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 10));
+            rewards.Add(itemDatas3);
+        }
+        else if (GameManager.Instance.playerInfo.level == 3)
+        {
+            rewards = new List<List<ItemData>>();
+            List<ItemData> itemDatas = new List<ItemData>();
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 3));
+            rewards.Add(itemDatas);
+
+            List<ItemData> itemDatas2 = new List<ItemData>();
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 3));
+            rewards.Add(itemDatas2);
+
+            List<ItemData> itemDatas3 = new List<ItemData>();
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 3));
+            rewards.Add(itemDatas3);
+
+        }
+        else
+        {
+            rewards = new List<List<ItemData>>();
+            List<ItemData> itemDatas = new List<ItemData>();
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 2));
+            rewards.Add(itemDatas);
+
+            List<ItemData> itemDatas2 = new List<ItemData>();
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 3));
+            rewards.Add(itemDatas2);
+
+            List<ItemData> itemDatas3 = new List<ItemData>();
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 4));
+            rewards.Add(itemDatas3);
+        }
+
 
         progress = 0;
         rewardIndex = 0;
@@ -153,10 +200,10 @@ public class GameBox : MonoBehaviour,IEventListener
             .AppendInterval(0.1F)
             .AppendCallback(() =>
             {
-         
+
                 UIManager.Instance.HideUIMask();
                 OtherSdkManager.Instance.CustomEvent("game_box_show", "show", "");
-                if(_lv == 1)
+                if (_lv == 1 || _lv == 2)
                 {
                     UIManager.Instance.OpenUI<GeneralRewardsPanel2>(allGetRewards, () =>
                     {

@@ -234,6 +234,11 @@ public class ApplovinMaxInterstitialOperator : MonoBehaviour
         Debug.Log("插屏广告已关闭");
         isPlayInsertAds = false;
         LoadInterstitial();
+
+        if(!IsClick)
+        {
+            OtherSdkManager.Instance.CustomEvent("auto_interstitial_close", "level_id", GameManager.Instance.playerInfo.level);
+        }
     }
 
     private void OnInterstitialAdRevenuePaidEvent(string adUnitId, MaxSdk.AdInfo adInfo)

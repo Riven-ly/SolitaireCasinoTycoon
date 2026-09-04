@@ -46,6 +46,13 @@ public class EvaluationGamePanel : UIBase
             Hide();
         });
     }
+    public string SecondsToHMS(float totalSeconds)
+    {
+        int hours = Mathf.FloorToInt(totalSeconds / 3600);
+        int minutes = Mathf.FloorToInt((totalSeconds % 3600) / 60);
+        int seconds = Mathf.FloorToInt(totalSeconds % 60);
+        return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
+    }
 
     public override void Refresh(object data = null)
     {
@@ -54,6 +61,7 @@ public class EvaluationGamePanel : UIBase
         bg2.gameObject.SetActive(false);
 
         GameScenePanel.isPause = true;
+        OtherSdkManager.Instance.CustomEvent("game_rating_show", "time", SecondsToHMS(Time.realtimeSinceStartup));
     }
     public override void Hide()
     {
@@ -64,7 +72,9 @@ public class EvaluationGamePanel : UIBase
             AdManager.Instance.applovinMaxInterstitialOperator.insertClickCoolingTime = 0f;
             AdManager.Instance.applovinMaxInterstitialOperator.insertTimer = ApplovinMaxInterstitialOperator.insertTime;
             PlayerPrefs.SetString("EvaluationGame", "yes");
+            OtherSdkManager.Instance.CustomEvent("game_60s_start", "time", SecondsToHMS(Time.realtimeSinceStartup));
         }
+        OtherSdkManager.Instance.CustomEvent("rating_close_time", "time", SecondsToHMS(Time.realtimeSinceStartup));
         base.Hide();
     }
 

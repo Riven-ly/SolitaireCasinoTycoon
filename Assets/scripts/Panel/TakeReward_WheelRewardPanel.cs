@@ -77,7 +77,7 @@ public class TakeReward_WheelRewardPanel : UIBase
         rewardAdButton.Init(AdsCallback, page_id, _isContainGold);
 
         rewardAdButton.gameObject.SetActive(GameManager.Instance.playerInfo.level > 2);
-        collectBtn.gameObject.SetActive(GameManager.Instance.playerInfo.level > 2);
+        collectTrans.gameObject.SetActive(GameManager.Instance.playerInfo.level > 2);
         collect2Btn.gameObject.SetActive(GameManager.Instance.playerInfo.level <= 2);
 
     }

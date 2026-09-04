@@ -11,6 +11,7 @@ public class TakeReward_WheelRewardPanel : UIBase
     public Transform itemRoot;
     public RewardAdButton rewardAdButton;
     public Button collectBtn;
+    public Button collect2Btn;
     public Transform collectTrans;
     public Text collectText;
 
@@ -32,6 +33,12 @@ public class TakeReward_WheelRewardPanel : UIBase
             AudioManager.Instance.PlayBtnMusic();
             AdManager.Instance.OnClickInterstitialAd("TakeReward_WheelRewardPanel");
             CollectClick();
+        });
+        collect2Btn.onClick.AddListener(() =>
+        {
+            AudioManager.Instance.PlayBtnMusic();
+            AdManager.Instance.OnClickInterstitialAd("TakeReward_WheelRewardPanel");
+            AdsCallback();
         });
     }
     private void OnEnable()
@@ -68,6 +75,11 @@ public class TakeReward_WheelRewardPanel : UIBase
         //collectText.text = $"{LanguageManager.Instance.GetText("CLAIM")} {unit}{MathF.Round(itemDatas[0].count / 10f, 2)}";
         collectText.text = LanguageManager.Instance.GetText("CLAIM");
         rewardAdButton.Init(AdsCallback, page_id, _isContainGold);
+
+        rewardAdButton.gameObject.SetActive(GameManager.Instance.playerInfo.level > 2);
+        collectBtn.gameObject.SetActive(GameManager.Instance.playerInfo.level > 2);
+        collect2Btn.gameObject.SetActive(GameManager.Instance.playerInfo.level <= 2);
+
     }
 
     private void AdsCallback()

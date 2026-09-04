@@ -73,15 +73,15 @@ public class GameBox : MonoBehaviour,IEventListener
         {
             rewards = new List<List<ItemData>>();
             List<ItemData> itemDatas = new List<ItemData>();
-            itemDatas.Add(new ItemData(ItemType.GoldDui, 3));
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 30));
             rewards.Add(itemDatas);
 
             List<ItemData> itemDatas2 = new List<ItemData>();
-            itemDatas2.Add(new ItemData(ItemType.GoldDui, 3));
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 30));
             rewards.Add(itemDatas2);
 
             List<ItemData> itemDatas3 = new List<ItemData>();
-            itemDatas3.Add(new ItemData(ItemType.GoldDui, 3));
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 30));
             rewards.Add(itemDatas3);
 
         }
@@ -89,15 +89,15 @@ public class GameBox : MonoBehaviour,IEventListener
         {
             rewards = new List<List<ItemData>>();
             List<ItemData> itemDatas = new List<ItemData>();
-            itemDatas.Add(new ItemData(ItemType.GoldDui, 2));
+            itemDatas.Add(new ItemData(ItemType.GoldDui, 20));
             rewards.Add(itemDatas);
 
             List<ItemData> itemDatas2 = new List<ItemData>();
-            itemDatas2.Add(new ItemData(ItemType.GoldDui, 3));
+            itemDatas2.Add(new ItemData(ItemType.GoldDui, 30));
             rewards.Add(itemDatas2);
 
             List<ItemData> itemDatas3 = new List<ItemData>();
-            itemDatas3.Add(new ItemData(ItemType.GoldDui, 4));
+            itemDatas3.Add(new ItemData(ItemType.GoldDui, 40));
             rewards.Add(itemDatas3);
         }
 

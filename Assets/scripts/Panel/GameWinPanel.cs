@@ -169,9 +169,9 @@ public class GameWinPanel : UIBase
             OtherSdkManager.Instance.CustomEvent("newbie_guide_6_complete", "step", "6");
         }
 
-        noAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
+        noAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) <= 2);
         rewardAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
-        claimBtn.transform.parent.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) <= 2);
+        claimBtn.transform.parent.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
 
     }
 

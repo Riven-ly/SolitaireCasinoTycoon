@@ -158,7 +158,7 @@ public class GameWinPanel : UIBase
             
         }
         //Ã·«∞X 10
-        if(GameManager.Instance.playerInfo.level <= 2)
+        if(curGameWinLv <= 2)
         {
             foreach (var dataconfig in itemDatas)
             {
@@ -178,9 +178,9 @@ public class GameWinPanel : UIBase
             OtherSdkManager.Instance.CustomEvent("newbie_guide_6_complete", "step", "6");
         }
 
-        noAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) <= 2);
-        rewardAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
-        claimBtn.transform.parent.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
+        noAdButton.gameObject.SetActive(curGameWinLv <= 2);
+        rewardAdButton.gameObject.SetActive(curGameWinLv > 2);
+        claimBtn.transform.parent.gameObject.SetActive(curGameWinLv > 2);
     }
 
     private void AdsCallback()

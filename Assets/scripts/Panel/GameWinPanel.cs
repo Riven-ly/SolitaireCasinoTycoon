@@ -48,7 +48,7 @@ public class GameWinPanel : UIBase
         noAdButton.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
-            AdsCallback();
+            AdsCallback2();
         });
         
     }
@@ -157,6 +157,15 @@ public class GameWinPanel : UIBase
             }
             
         }
+        //Ã·«∞X 10
+        if(GameManager.Instance.playerInfo.level <= 2)
+        {
+            foreach (var dataconfig in itemDatas)
+            {
+                dataconfig.count = dataconfig.count * 10f;
+                dataconfig.count = System.MathF.Round(dataconfig.count, 2);
+            }
+        }
 
         itemBase = GameManager.Instance.CreatItems(itemDatas, itemRoot);
 
@@ -172,7 +181,6 @@ public class GameWinPanel : UIBase
         noAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) <= 2);
         rewardAdButton.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
         claimBtn.transform.parent.gameObject.SetActive((GameManager.Instance.playerInfo.level - 1) > 2);
-
     }
 
     private void AdsCallback()
@@ -201,6 +209,44 @@ public class GameWinPanel : UIBase
             }
 
             item.count = item.count * 10;
+            item.GetItemReward();
+            item.PlayItemAnim();
+        }
+        //GameManager.Instance.SavePlayerInfo();
+        //∂Øª≠
+        DOTween.Sequence().AppendInterval(awaitTime).AppendCallback(() =>
+        {
+            playerInfoUI.GoldCanvasRecover();
+            playerInfoUI.DiamondCanvasRecover();
+            Hide();
+        });
+    }
+
+    private void AdsCallback2()
+    {
+        OtherSdkManager.Instance.CustomEvent("settle_popup_click", "level_id", GameManager.Instance.playerInfo.level - 1, "click", "claim_more");
+        OtherSdkManager.Instance.CustomEvent("settlement_ad_reward_claim", "level_id", GameManager.Instance.playerInfo.level - 1);
+
+        ScoreAnimStop();
+
+        PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();
+        UIManager.Instance.OpenUIMask();
+        float awaitTime = 2f;
+
+
+        foreach (var item in itemBase)
+        {
+            if (item.itemType == ItemType.Gold || item.itemType == ItemType.GoldDui)
+            {
+                awaitTime = 2f;
+                playerInfoUI.GoldCanvasTop();
+            }
+            else if (item.itemType == ItemType.Diamond || item.itemType == ItemType.DiamondDui)
+            {
+                awaitTime = 2f;
+                playerInfoUI.DiamondCanvasTop();
+            }
+
             item.GetItemReward();
             item.PlayItemAnim();
         }

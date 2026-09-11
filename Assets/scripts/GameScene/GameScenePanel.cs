@@ -27,6 +27,16 @@ public class GameScenePanel : UIBase
     public int score;
     public int move;
     public int second = 0;
+    public float levelStartTime;
+    private int levelId;
+    private bool settlementShown;
+    private float settlementShowTime;
+    private bool levelExitReported;
+    private bool backgroundTracked;
+    private int backgroundLevelId;
+    private int backgroundLastBoxIndex;
+    private bool backgroundIsSettled;
+    private int backgroundLevelElapsedMs;
     private float timer;
     //--------
     public static float ScoreRate = 1;
@@ -98,14 +108,80 @@ public class GameScenePanel : UIBase
     }
 
    
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (!isActiveAndEnabled || levelExitReported)
+            return;
+
+        if (pauseStatus)
+        {
+            backgroundLevelId = levelId;
+            backgroundLastBoxIndex = GameBox.Instance.LastBoxIndex;
+            backgroundIsSettled = settlementShown;
+            backgroundLevelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - levelStartTime) * 1000f);
+            OtherSdkManager.Instance.CustomEvent("level_state_change", "level_id", backgroundLevelId, "state_reason", "background", "last_box_index", backgroundLastBoxIndex, "is_settled", backgroundIsSettled, "level_elapsed_ms", backgroundLevelElapsedMs);
+            backgroundTracked = true;
+        }
+        else if (backgroundTracked)
+        {
+            int levelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - levelStartTime) * 1000f);
+            OtherSdkManager.Instance.CustomEvent("level_state_change", "level_id", backgroundLevelId, "state_reason", "resume", "last_box_index", backgroundLastBoxIndex, "is_settled", backgroundIsSettled, "level_elapsed_ms", levelElapsedMs);
+            backgroundTracked = false;
+        }
+    }
+
+
+    public void MarkSettlementShown()
+    {
+        settlementShown = true;
+        settlementShowTime = Time.realtimeSinceStartup;
+    }
+
+    public void TrackLevelExit(string exitReason)
+    {
+        if (levelExitReported)
+            return;
+
+        levelExitReported = true;
+        int currentLevelId = levelId;
+        int lastBoxIndex = GameBox.Instance.LastBoxIndex;
+        bool hasLastBox = lastBoxIndex > 0;
+        bool hasSettlement = settlementShown;
+        bool isSettled = hasSettlement;
+        if (hasLastBox && hasSettlement)
+        {
+            OtherSdkManager.Instance.CustomEvent("level_exit", "level_id", currentLevelId, "exit_reason", exitReason, "is_settled", isSettled, "last_box_index", lastBoxIndex, "since_last_box_ms", GameBox.Instance.GetSinceLastBoxMs(), "settle_to_exit_ms", Mathf.RoundToInt((Time.realtimeSinceStartup - settlementShowTime) * 1000f));
+        }
+        else if (hasLastBox)
+        {
+            OtherSdkManager.Instance.CustomEvent("level_exit", "level_id", currentLevelId, "exit_reason", exitReason, "is_settled", isSettled, "last_box_index", lastBoxIndex, "since_last_box_ms", GameBox.Instance.GetSinceLastBoxMs());
+        }
+        else if (hasSettlement)
+        {
+            OtherSdkManager.Instance.CustomEvent("level_exit", "level_id", currentLevelId, "exit_reason", exitReason, "is_settled", isSettled, "last_box_index", lastBoxIndex, "settle_to_exit_ms", Mathf.RoundToInt((Time.realtimeSinceStartup - settlementShowTime) * 1000f));
+        }
+        else
+        {
+            OtherSdkManager.Instance.CustomEvent("level_exit", "level_id", currentLevelId, "exit_reason", exitReason, "is_settled", isSettled, "last_box_index", lastBoxIndex);
+        }
+    }
+
+
     public void ResetGame()
     {
+        TrackLevelExit("settle_next_level");
         Refresh();
     }
 
     public override void Refresh(object data = null)
     {
         base.Refresh(data);
+        levelStartTime = Time.realtimeSinceStartup;
+        levelId = GameManager.Instance.playerInfo.level;
+        settlementShown = false;
+        settlementShowTime = 0f;
+        levelExitReported = false;
+        backgroundTracked = false;
 
         playingCardControl.Init();
 

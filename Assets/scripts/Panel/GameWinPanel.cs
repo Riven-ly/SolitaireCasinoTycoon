@@ -71,6 +71,9 @@ public class GameWinPanel : UIBase
 
         AudioManager.Instance.PlaySceneSingleMusic("gamewin");
         GameScenePanel gameScenePanel = UIManager.Instance.GetUI<GameScenePanel>();
+        gameScenePanel.MarkSettlementShown();
+        int levelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - gameScenePanel.levelStartTime) * 1000f);
+        OtherSdkManager.Instance.CustomEvent("level_settle_show", "level_id", GameManager.Instance.playerInfo.level - 1, "level_elapsed_ms", levelElapsedMs);
         moveText.text = gameScenePanel.move.ToString();
         timeText.text = GameManager.Instance.GetTimeString(gameScenePanel.second);
         scoreText.text = gameScenePanel.score.ToString();

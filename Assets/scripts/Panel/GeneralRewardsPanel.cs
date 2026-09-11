@@ -71,6 +71,7 @@ public class GeneralRewardsPanel : UIBase
 
     private void AdsCallback()
     {
+        GameBox.Instance.SetBoxRewardClaimMethod("rewarded_ad");
         OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_two");
         OtherSdkManager.Instance.CustomEvent("general_reward_ad_claim", "level_id", GameBox.curLv);
 
@@ -104,6 +105,7 @@ public class GeneralRewardsPanel : UIBase
 
     private void CollectClick()
     {
+        GameBox.Instance.SetBoxRewardClaimMethod("normal");
         OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_one");
 
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();

@@ -102,6 +102,7 @@ public class SettingPanel : UIBase
             callback = () =>
             {
                 AdManager.Instance.OnClickInterstitialAd(page_id);
+                UIManager.Instance.GetUI<GameScenePanel>().TrackLevelExit("settings_quit");
                 UIManager.Instance.GetUI<GameScenePanel>().Hide();
                 UIManager.Instance.OpenUI<LobbyScenePanel>(0);
                 AudioManager.Instance.PlayBGM("BGM1");

@@ -170,7 +170,7 @@ public class OtherSdkManager : MonoBehaviour
         SEConfig seConfig = new SEConfig();
         seConfig.initCompletedCallback = (e) =>
         {
-            IsInit = e == 0;
+            IsInit = true;
             Debug.Log("SolarEngineInit :" + e);
             ReadRemoteConfigAfterInit2();
         };
@@ -302,6 +302,60 @@ public class OtherSdkManager : MonoBehaviour
         customAttributes.Add(_key, _value);
         customAttributes.Add(_key2, _value2);
         customAttributes.Add(_key3, _value3);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, object _value, string _key2, object _value2, string _key3, object _value3, string _key4, object _value4)
+    {
+        if (!IsInit)
+            return;
+
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        customAttributes.Add(_key3, _value3);
+        customAttributes.Add(_key4, _value4);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, object _value, string _key2, object _value2, string _key3, object _value3, string _key4, object _value4, string _key5, object _value5)
+    {
+        if (!IsInit)
+            return;
+
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        customAttributes.Add(_key3, _value3);
+        customAttributes.Add(_key4, _value4);
+        customAttributes.Add(_key5, _value5);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, object _value, string _key2, object _value2, string _key3, object _value3, string _key4, object _value4, string _key5, object _value5, string _key6, object _value6)
+    {
+        if (!IsInit)
+            return;
+
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        customAttributes.Add(_key3, _value3);
+        customAttributes.Add(_key4, _value4);
+        customAttributes.Add(_key5, _value5);
+        customAttributes.Add(_key6, _value6);
+        SolarEngine.Analytics.track(eName, customAttributes);
+    }
+    public void CustomEvent(string eName, string _key, object _value, string _key2, object _value2, string _key3, object _value3, string _key4, object _value4, string _key5, object _value5, string _key6, object _value6, string _key7, object _value7)
+    {
+        if (!IsInit)
+            return;
+
+        Dictionary<string, object> customAttributes = new Dictionary<string, object>();
+        customAttributes.Add(_key, _value);
+        customAttributes.Add(_key2, _value2);
+        customAttributes.Add(_key3, _value3);
+        customAttributes.Add(_key4, _value4);
+        customAttributes.Add(_key5, _value5);
+        customAttributes.Add(_key6, _value6);
+        customAttributes.Add(_key7, _value7);
         SolarEngine.Analytics.track(eName, customAttributes);
     }
 }

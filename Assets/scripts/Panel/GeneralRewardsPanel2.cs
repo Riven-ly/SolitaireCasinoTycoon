@@ -44,6 +44,7 @@ public class GeneralRewardsPanel2 : UIBase
 
     private void CollectClick()
     {
+        GameBox.Instance.SetBoxRewardClaimMethod("normal");
         OtherSdkManager.Instance.CustomEvent("rewards_click", "click", "claim_one");
 
         PlayerInfoUI playerInfoUI = UIManager.Instance.GetUI<PlayerInfoUI>();

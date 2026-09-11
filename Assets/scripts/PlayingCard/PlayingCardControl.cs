@@ -750,7 +750,14 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
             {
                 GameManager.Instance.EvaluationGameCallback = () =>
                 {
-                    GameManager.Instance.TryEvaluationGame();
+                    string str = PlayerPrefs.GetString("EvaluationGame", "");
+                    if (string.IsNullOrEmpty(str))
+                    {
+                        PlayerPrefs.SetString("EvaluationGame", "yes");
+                        AdManager.Instance.applovinMaxInterstitialOperator.insertClickCoolingTime = 0f;
+                        AdManager.Instance.applovinMaxInterstitialOperator.insertTimer = ApplovinMaxInterstitialOperator.insertTime;
+                    }
+                    //GameManager.Instance.TryEvaluationGame();
                 };
             }
             UIManager.Instance.GetUI<GameScenePanel>().ResetGame();
@@ -758,6 +765,7 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         else if (GameManager.Instance.gameType == GameType.DailyGame)
         {
             EventManager.Instance.TriggerEvent(GameEvent.DailyChallengeComplete);
+            UIManager.Instance.GetUI<GameScenePanel>().TrackLevelExit("settle_back_lobby");
             UIManager.Instance.GetUI<GameScenePanel>().Hide();
             UIManager.Instance.OpenUI<LobbyScenePanel>(2);
             AudioManager.Instance.PlayBGM("BGM1");

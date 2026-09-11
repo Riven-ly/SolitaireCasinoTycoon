@@ -30,6 +30,7 @@ public class ArchitecturePanel : UIBase
                 PlayerPrefs.SetString("GuidePanel_Architecture1", "yes");
                 callback = () =>
                 {
+                    UIManager.Instance.GetUI<GameScenePanel>().TrackLevelExit("settle_back_lobby");
                     UIManager.Instance.GetUI<GameScenePanel>().Hide();
                     UIManager.Instance.OpenUI<LobbyScenePanel>(1);
                     AudioManager.Instance.PlayBGM("BGM1");

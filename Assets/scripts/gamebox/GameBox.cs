@@ -23,6 +23,14 @@ public class GameBox : MonoBehaviour,IEventListener
     private int rewardIndex;
     private List<int> targetCnt;
     private List<List<ItemData>> rewards;
+    private int firstBoxRewardIndex;
+    private int lastBoxRewardIndex;
+    private int boxRewardLevelId;
+    private int boxRewardReachToShowMs;
+    private float boxRewardShowTime;
+    private string boxRewardClaimMethod;
+    private int lastBoxIndex;
+    private float lastBoxReachTime;
     private void Awake()
     {
         Instance = this;
@@ -104,6 +112,8 @@ public class GameBox : MonoBehaviour,IEventListener
 
         progress = 0;
         rewardIndex = 0;
+        lastBoxIndex = 0;
+        lastBoxReachTime = 0f;
         UpdateProgressUI();
         PlayIdleAnim();
 
@@ -124,6 +134,41 @@ public class GameBox : MonoBehaviour,IEventListener
         {
             PlayIdleAnim();
         }).SetTarget(transform);
+    }
+
+    public int LastBoxIndex => lastBoxIndex;
+
+    public int GetSinceLastBoxMs()
+    {
+        return Mathf.RoundToInt((Time.realtimeSinceStartup - lastBoxReachTime) * 1000f);
+    }
+
+    public void SetBoxRewardClaimMethod(string claimMethod)
+    {
+        boxRewardClaimMethod = claimMethod;
+    }
+
+    private void TrackBoxRewardShow(int levelId, int firstRewardIndex, int lastRewardIndex, int reachToShowMs)
+    {
+        boxRewardLevelId = levelId;
+        firstBoxRewardIndex = firstRewardIndex;
+        lastBoxRewardIndex = lastRewardIndex;
+        boxRewardReachToShowMs = reachToShowMs;
+        boxRewardShowTime = Time.realtimeSinceStartup;
+        boxRewardClaimMethod = "normal";
+        for (int i = firstBoxRewardIndex; i < lastBoxRewardIndex; i++)
+        {
+            OtherSdkManager.Instance.CustomEvent("level_box_show", "level_id", boxRewardLevelId, "box_index", i + 1, "box_target", targetCnt[i], "reach_to_show_ms", boxRewardReachToShowMs);
+        }
+    }
+
+    private void TrackBoxRewardClose()
+    {
+        int boxDwellMs = Mathf.RoundToInt((Time.realtimeSinceStartup - boxRewardShowTime) * 1000f);
+        for (int i = firstBoxRewardIndex; i < lastBoxRewardIndex; i++)
+        {
+            OtherSdkManager.Instance.CustomEvent("level_box_close", "level_id", boxRewardLevelId, "box_index", i + 1, "box_target", targetCnt[i], "reach_to_show_ms", boxRewardReachToShowMs, "box_dwell_ms", boxDwellMs, "claim_method", boxRewardClaimMethod);
+        }
     }
 
     public void UpdateProgressUI()
@@ -156,12 +201,17 @@ public class GameBox : MonoBehaviour,IEventListener
         }
 
         bool hasReward = false;
+        int firstRewardIndex = rewardIndex;
+        float firstReachTime = Time.realtimeSinceStartup;
         List<ItemData> allGetRewards = new List<ItemData>();
         // 循环领取所有当前进度已达标的档位
         while (rewardIndex < targetCnt.Count && progress >= targetCnt[rewardIndex])
         {
             hasReward = true;
             Debug.Log("领取档位：" + rewardIndex);
+            OtherSdkManager.Instance.CustomEvent("level_box_reach", "level_id", _lv, "box_index", rewardIndex + 1, "box_target", targetCnt[rewardIndex], "box_progress", progress);
+            lastBoxIndex = rewardIndex + 1;
+            lastBoxReachTime = Time.realtimeSinceStartup;
             allGetRewards.AddRange(rewards[rewardIndex]);
             rewardIndex++;
         }
@@ -207,22 +257,28 @@ public class GameBox : MonoBehaviour,IEventListener
                 {
                     UIManager.Instance.OpenUI<GeneralRewardsPanel2>(allGetRewards, () =>
                     {
+                        TrackBoxRewardClose();
                         xiangzi_kai.gameObject.SetActive(false);
                         GameScenePanel.isPause = false;
                         UpdateProgressUI();
                         _callback?.Invoke();
                     });
+                    int reachToShowMs = Mathf.RoundToInt((Time.realtimeSinceStartup - firstReachTime) * 1000f);
+                    TrackBoxRewardShow(_lv, firstRewardIndex, rewardIndex, reachToShowMs);
                 }
                 else
                 {
                     curLv = _lv;
                     UIManager.Instance.OpenUI<GeneralRewardsPanel>(allGetRewards, () =>
                     {
+                        TrackBoxRewardClose();
                         xiangzi_kai.gameObject.SetActive(false);
                         GameScenePanel.isPause = false;
                         UpdateProgressUI();
                         _callback?.Invoke();
                     });
+                    int reachToShowMs = Mathf.RoundToInt((Time.realtimeSinceStartup - firstReachTime) * 1000f);
+                    TrackBoxRewardShow(_lv, firstRewardIndex, rewardIndex, reachToShowMs);
                 }
                   
             })

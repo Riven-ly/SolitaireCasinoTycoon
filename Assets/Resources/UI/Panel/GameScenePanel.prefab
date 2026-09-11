@@ -252,7 +252,6 @@ MonoBehaviour:
   cells: {fileID: 1773238359419694846}
   btn: {fileID: 4206557831153870441}
   cntText: {fileID: 5934076255239683473}
-  correctAnim: {fileID: 0}
   leftCards: []
   rightCards: []
 --- !u!223 &5750292011764730383
@@ -877,6 +876,7 @@ MonoBehaviour:
   score: 0
   move: 0
   second: 0
+  levelStartTime: 0
 --- !u!1 &3200672026804865418
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,6 +3965,10 @@ PrefabInstance:
     - target: {fileID: 4530795544546990051, guid: 0b123583de874584ab7ceae242e36fd8, type: 3}
       propertyPath: m_Name
       value: GameSceneItem_Extract
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312448177290973065, guid: 0b123583de874584ab7ceae242e36fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8697640727083954893, guid: 0b123583de874584ab7ceae242e36fd8, type: 3}
       propertyPath: m_Pivot.x

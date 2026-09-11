@@ -44,11 +44,13 @@ public class GameSceneItemBase : MonoBehaviour
         clickBtn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
             OnClick();
         });
         lockBtn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlayBtnMusic();
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
             //string str = string.Format(LanguageManager.Instance.GetText("LockLvTips"), lockLv);
             //UIManager.Instance.OpenUI<GeneralTipsPanel>(str);
         });

@@ -8,10 +8,22 @@ using UnityEngine;
 public class GameSceneItem_Extract : GameSceneItemBase
 {
     PlayingCardControl playingCardControl;
+    public Transform guideTrans;
+
+    public void ShowGuide()
+    {
+        guideTrans.gameObject.SetActive(true);
+    }
+
+    public void HideGuide()
+    {
+        guideTrans.gameObject.SetActive(false);
+    }
 
     public override void Refresh()
     {
         base.Refresh();
+        HideGuide();
         playingCardControl = UIManager.Instance.GetUI<GameScenePanel>().playingCardControl;
         cnt = GameManager.Instance.playerInfo.gameSceneItem_Extract;
         type = SceneItemType.item_Extract;

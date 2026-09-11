@@ -25,6 +25,7 @@ public class ResiduePlayingCards : MonoBehaviour
         btn.onClick.AddListener(() =>
         {
             AudioManager.Instance.PlaySceneSingleMusic("ResiduePlayingCardClick");
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
             EventManager.Instance.TriggerEvent(GameEvent.StopHintAnim);
             SwitchCard();
         });

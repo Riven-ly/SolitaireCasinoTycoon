@@ -37,6 +37,9 @@ public class GameScenePanel : UIBase
     private int backgroundLastBoxIndex;
     private bool backgroundIsSettled;
     private int backgroundLevelElapsedMs;
+    private int invalidCardClickCount;
+    private bool extractGuideShown;
+    private Sequence extractGuideIdleSequence;
     private float timer;
     //--------
     public static float ScoreRate = 1;
@@ -108,6 +111,63 @@ public class GameScenePanel : UIBase
     }
 
    
+    public void RecordCardInteraction()
+    {
+        RestartExtractGuideIdleTimer();
+    }
+
+    public void RecordInvalidCardClick()
+    {
+        RestartExtractGuideIdleTimer();
+        invalidCardClickCount++;
+        if (invalidCardClickCount >= 10)
+        {
+            ShowExtractGuide();
+        }
+    }
+
+    public void RecordNormalOperation()
+    {
+        invalidCardClickCount = 0;
+        extractGuideShown = false;
+        gameSceneItem_Extract.HideGuide();
+        RestartExtractGuideIdleTimer();
+    }
+
+    public void OnPopupOpened()
+    {
+        extractGuideIdleSequence?.Kill();
+    }
+
+    public void OnPopupClosed()
+    {
+        if (isOpen)
+        {
+            RestartExtractGuideIdleTimer();
+        }
+    }
+
+    private void RestartExtractGuideIdleTimer()
+    {
+        extractGuideIdleSequence?.Kill();
+        extractGuideIdleSequence = DOTween.Sequence().AppendInterval(10f).AppendCallback(ShowExtractGuide).SetTarget(transform);
+    }
+
+    private void ShowExtractGuide()
+    {
+        extractGuideShown = true;
+        gameSceneItem_Extract.ShowGuide();
+    }
+
+    private void ResetExtractGuide()
+    {
+        invalidCardClickCount = 0;
+        extractGuideShown = false;
+        extractGuideIdleSequence?.Kill();
+        gameSceneItem_Extract.HideGuide();
+    }
+
+
     private void OnApplicationPause(bool pauseStatus)
     {
         if (!isActiveAndEnabled || levelExitReported)
@@ -182,6 +242,7 @@ public class GameScenePanel : UIBase
         settlementShowTime = 0f;
         levelExitReported = false;
         backgroundTracked = false;
+        ResetExtractGuide();
 
         playingCardControl.Init();
 
@@ -262,6 +323,7 @@ public class GameScenePanel : UIBase
         playingCardControl.residuePlayingCards.UpdateUI();
         UIManager.Instance.HideUIMask();
         isPause = false;
+        RestartExtractGuideIdleTimer();
 
         string str = PlayerPrefs.GetString("GameTipsPanel", "");
         if(string.IsNullOrEmpty(str))

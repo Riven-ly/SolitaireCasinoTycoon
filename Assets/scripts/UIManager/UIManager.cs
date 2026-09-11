@@ -111,6 +111,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void NotifyPopupOpened()
+    {
+        if (uiDict.TryGetValue(nameof(GameScenePanel), out UIBase ui))
+        {
+            (ui as GameScenePanel).OnPopupOpened();
+        }
+    }
+
+    public void NotifyPopupClosed()
+    {
+        foreach (var ui in uiDict)
+        {
+            if (ui.Value.isOpen && ui.Value.uIPanelLayer != UIPanelLayer.GameScene && ui.Value.uIPanelLayer != UIPanelLayer.PlayerInfoUI)
+            {
+                return;
+            }
+        }
+
+        if (uiDict.TryGetValue(nameof(GameScenePanel), out UIBase gameSceneUi))
+        {
+            (gameSceneUi as GameScenePanel).OnPopupClosed();
+        }
+    }
+
     public bool CheckIstheUIopen()
     {
         bool isOpen = false;

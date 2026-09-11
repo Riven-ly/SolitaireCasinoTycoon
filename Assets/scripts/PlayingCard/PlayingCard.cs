@@ -470,6 +470,15 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 
         //复位动画  当是回收区时卡片或者没有完成的，跳过自动检测
+        if (isHaveCorrect)
+        {
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
+        }
+        else
+        {
+            UIManager.Instance.GetUI<GameScenePanel>().RecordCardInteraction();
+        }
+
         BackCorrectPosCoroutine(isRecycleDrag || !isHaveCorrect, isHaveCorrect); 
     }
 
@@ -642,15 +651,18 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             return;
 
         EventManager.Instance.TriggerEvent(GameEvent.StopHintAnim);
-        //先检测回收
+        UIManager.Instance.GetUI<GameScenePanel>().RecordCardInteraction();
         if (TryRecycleHoming(true))
         {
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
             return;
         }
         if(TryQueueHoming(true))
         {
+            UIManager.Instance.GetUI<GameScenePanel>().RecordNormalOperation();
             return;
         }
+        UIManager.Instance.GetUI<GameScenePanel>().RecordInvalidCardClick();
         ShakeThis();
     }
     /// <summary>

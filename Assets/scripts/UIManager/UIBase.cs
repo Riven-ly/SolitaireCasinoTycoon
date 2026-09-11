@@ -49,6 +49,10 @@ public class UIBase : MonoBehaviour
     public virtual void Open(object data = null, Action _callback = null)
     {
         gameObject.SetActive(true);
+        if (uIPanelLayer != UIPanelLayer.GameScene && uIPanelLayer != UIPanelLayer.PlayerInfoUI)
+        {
+            UIManager.Instance.NotifyPopupOpened();
+        }
         gameObject.transform.SetAsLastSibling();
         callback = _callback;
         Refresh(data);
@@ -62,6 +66,10 @@ public class UIBase : MonoBehaviour
         if (panelAnim == null)
         {
             gameObject.SetActive(false);
+            if (uIPanelLayer != UIPanelLayer.GameScene && uIPanelLayer != UIPanelLayer.PlayerInfoUI)
+            {
+                UIManager.Instance.NotifyPopupClosed();
+            }
             callback?.Invoke();
             callback = null;
         }
@@ -73,6 +81,10 @@ public class UIBase : MonoBehaviour
             {
                 UIManager.Instance.HideUIMask();
                 gameObject.SetActive(false);
+                if (uIPanelLayer != UIPanelLayer.GameScene && uIPanelLayer != UIPanelLayer.PlayerInfoUI)
+                {
+                    UIManager.Instance.NotifyPopupClosed();
+                }
                 callback?.Invoke();
                 callback = null;
             });

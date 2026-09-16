@@ -429,8 +429,17 @@ public class GameScenePanel : UIBase
 
         int hiddenCardsLeft = playingCardControl.GetAllPlayingCard().Count - recycledCards;
         int levelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - levelStartTime) * 1000f);
-        Debug.Log($"[LevelStep] level_id:{levelId}, step_count:{levelStepCount}, step_type:{stepType}, level_elapsed_ms:{levelElapsedMs}, hidden_cards_left:{hiddenCardsLeft}");
-        OtherSdkManager.Instance.CustomEvent("level_step", "level_id", levelId, "step_count", levelStepCount, "step_type", stepType, "level_elapsed_ms", levelElapsedMs, "hidden_cards_left", hiddenCardsLeft);
+        if(GameManager.Instance.gameType == GameType.DailyGame)
+        {
+            int curday = UIManager.Instance.GetUI<LobbyScenePanel>().dailyChallengePanel.curSelectDay;
+            Debug.Log($"[LevelStep] level_daily :{curday}, step_count:{levelStepCount}, step_type:{stepType}, level_elapsed_ms:{levelElapsedMs}, hidden_cards_left:{hiddenCardsLeft}");
+            OtherSdkManager.Instance.CustomEvent("level_step", "level_daily", curday, "step_count", levelStepCount, "step_type", stepType, "level_elapsed_ms", levelElapsedMs, "hidden_cards_left", hiddenCardsLeft);
+        }
+        else
+        {
+            Debug.Log($"[LevelStep] level_id:{levelId}, step_count:{levelStepCount}, step_type:{stepType}, level_elapsed_ms:{levelElapsedMs}, hidden_cards_left:{hiddenCardsLeft}");
+            OtherSdkManager.Instance.CustomEvent("level_step", "level_id", levelId, "step_count", levelStepCount, "step_type", stepType, "level_elapsed_ms", levelElapsedMs, "hidden_cards_left", hiddenCardsLeft);
+        }
     }
 
     public void AddisEffectualStepAwaitCallback_Item2()

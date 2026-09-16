@@ -59,13 +59,13 @@ public class LevelConfigData
 
     // ==================== ID 3 ====================
     new LevelData() { ID = 3, DifType = 0, queues = new List<string>() {
-        "AS",
-        "AC,4S",
-        "3C,2S,KH",
-        "QS,10H,6C,2D",
-        "KD,5D,4H,3D,3S",
-        "9D,8D,3H,2C,AD,5S",
-        "QD,9H,8H,7D,7C,6S,AH"
+         "AS",
+         "AC,2S",
+         "KH,4S,2D",
+         "QS,10H,6C,3C",
+         "KD,5D,4H,3D,3S",
+         "9D,8D,3H,5S,AD",
+         "QD,9H,8H,7D,7C,6S,AH"
     } },
 
     // ==================== ID 4 ====================

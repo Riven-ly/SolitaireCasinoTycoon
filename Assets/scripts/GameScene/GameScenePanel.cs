@@ -417,6 +417,7 @@ public class GameScenePanel : UIBase
     public void ReportLevelStep(string stepType)
     {
         levelStepCount++;
+        isEffectualSteps = false;
         int recycledCards = 0;
         foreach (var recycle in playingCardControl.playingCardRecycles)
         {

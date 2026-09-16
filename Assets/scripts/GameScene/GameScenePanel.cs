@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ public class GameScenePanel : UIBase
     private int invalidCardClickCount;
     private int levelStepCount;
     public bool isEffectualSteps;
+    public Action isEffectualStepAwaitCallback;
     private bool extractGuideShown;
     private Sequence extractGuideIdleSequence;
     private float timer;
@@ -246,6 +248,7 @@ public class GameScenePanel : UIBase
         backgroundTracked = false;
         levelStepCount = 0;
         isEffectualSteps = false;
+        isEffectualStepAwaitCallback = null;
         ResetExtractGuide();
 
         playingCardControl.Init();
@@ -428,5 +431,13 @@ public class GameScenePanel : UIBase
         int levelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - levelStartTime) * 1000f);
         Debug.Log($"[LevelStep] level_id:{levelId}, step_count:{levelStepCount}, step_type:{stepType}, level_elapsed_ms:{levelElapsedMs}, hidden_cards_left:{hiddenCardsLeft}");
         OtherSdkManager.Instance.CustomEvent("level_step", "level_id", levelId, "step_count", levelStepCount, "step_type", stepType, "level_elapsed_ms", levelElapsedMs, "hidden_cards_left", hiddenCardsLeft);
+    }
+
+    public void AddisEffectualStepAwaitCallback_Item2()
+    {
+        isEffectualStepAwaitCallback = () =>
+        {
+            ReportLevelStep("item_2");
+        };
     }
 }

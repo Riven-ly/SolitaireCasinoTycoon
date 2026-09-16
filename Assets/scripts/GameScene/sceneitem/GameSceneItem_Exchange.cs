@@ -39,7 +39,7 @@ public class GameSceneItem_Exchange : GameSceneItemBase
         if (isUseItemSucceed)
         {
             OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", GameManager.Instance.playerInfo.level, "prop_id_number", "3");
-
+            UIManager.Instance.GetUI<GameScenePanel>().ReportLevelStep("item_3");
             GameManager.Instance.playerInfo.Minus_item_exchange(1);
             //GameManager.Instance.SavePlayerInfo();
             Refresh();

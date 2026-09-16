@@ -219,6 +219,11 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
             }
         }
 
+        GameScenePanel gameScenePanel = UIManager.Instance.GetUI<GameScenePanel>();
+        if (gameScenePanel.isEffectualSteps)
+        {
+            gameScenePanel.ReportLevelStep("move");
+        }
         Debug.Log("自动归位检测结束");
     }
 
@@ -693,6 +698,8 @@ public class PlayingCardControl : MonoBehaviour,IEventListener
         }
 
         yield return new WaitForSeconds(0.5f);
+        UIManager.Instance.GetUI<GameScenePanel>().ReportLevelStep("move");
+
         if (SettingPanel.IsVibrateEnabled)
         {
             Handheld.Vibrate();

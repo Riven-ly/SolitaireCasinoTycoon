@@ -715,6 +715,7 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 PlayRecycleAnim();
                 //Debug.Log(GetName() + "-ªÿ ’-" + score);
                 EventManager.Instance.TriggerEvent(GameEvent.AddGameBox, 1);
+                gameScenePanel.isEffectualSteps = true;
             }
         }
     }

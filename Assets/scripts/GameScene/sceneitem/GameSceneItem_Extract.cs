@@ -52,7 +52,7 @@ public class GameSceneItem_Extract : GameSceneItemBase
         if (isUseItemSucceed)
         {
             OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", GameManager.Instance.playerInfo.level, "prop_id_number", "2");
-
+            UIManager.Instance.GetUI<GameScenePanel>().ReportLevelStep("item_2");
             GameManager.Instance.playerInfo.Minus_item_extract(1);
             // GameManager.Instance.SavePlayerInfo();
             Refresh();

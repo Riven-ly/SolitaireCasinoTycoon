@@ -38,6 +38,8 @@ public class GameScenePanel : UIBase
     private bool backgroundIsSettled;
     private int backgroundLevelElapsedMs;
     private int invalidCardClickCount;
+    private int levelStepCount;
+    public bool isEffectualSteps;
     private bool extractGuideShown;
     private Sequence extractGuideIdleSequence;
     private float timer;
@@ -242,6 +244,8 @@ public class GameScenePanel : UIBase
         settlementShowTime = 0f;
         levelExitReported = false;
         backgroundTracked = false;
+        levelStepCount = 0;
+        isEffectualSteps = false;
         ResetExtractGuide();
 
         playingCardControl.Init();
@@ -408,5 +412,20 @@ public class GameScenePanel : UIBase
     {
         move += _add;
         UpdateMoveUI();
+    }
+
+    public void ReportLevelStep(string stepType)
+    {
+        levelStepCount++;
+        int recycledCards = 0;
+        foreach (var recycle in playingCardControl.playingCardRecycles)
+        {
+            recycledCards += recycle.recycleRoot.childCount;
+        }
+
+        int hiddenCardsLeft = playingCardControl.GetAllPlayingCard().Count - recycledCards;
+        int levelElapsedMs = Mathf.RoundToInt((Time.realtimeSinceStartup - levelStartTime) * 1000f);
+        Debug.Log($"[LevelStep] level_id:{levelId}, step_count:{levelStepCount}, step_type:{stepType}, level_elapsed_ms:{levelElapsedMs}, hidden_cards_left:{hiddenCardsLeft}");
+        OtherSdkManager.Instance.CustomEvent("level_step", "level_id", levelId, "step_count", levelStepCount, "step_type", stepType, "level_elapsed_ms", levelElapsedMs, "hidden_cards_left", hiddenCardsLeft);
     }
 }

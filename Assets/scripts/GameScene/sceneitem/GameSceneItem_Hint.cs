@@ -36,6 +36,7 @@ public class GameSceneItem_Hint : GameSceneItemBase
         bool isUseItemSucceed = TryHintAnim();
         if (isUseItemSucceed)
         {
+            UIManager.Instance.GetUI<GameScenePanel>().ReportLevelStep("item_1");
             OtherSdkManager.Instance.CustomEvent("prop_use", "level_id", GameManager.Instance.playerInfo.level, "prop_id_number", "1");
 
             GameManager.Instance.playerInfo.Minus_item_hint(1);

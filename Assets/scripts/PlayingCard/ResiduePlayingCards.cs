@@ -152,6 +152,8 @@ public class ResiduePlayingCards : MonoBehaviour
             leftCards.Add(card);
             SwitchAnim();
             GameStepRecord.Instance.RecordTheSteps();      //¸üÐÂ²½Öè
+            GameScenePanel gameScenePanel = UIManager.Instance.GetUI<GameScenePanel>();
+            gameScenePanel.ReportLevelStep("draw");
         }
         UpdateUI();
     }
